@@ -1,0 +1,13 @@
+Flask==3.0.0
+Flask-Login==0.6.3
+Flask-Session==0.5.0
+Flask-CORS==4.0.0
+Flask-SocketIO==5.3.6
+selenium==4.15.2
+requests==2.31.0
+pyodbc==5.0.1
+webdriver-manager==4.0.1
+Werkzeug==3.0.1
+cryptography==41.0.7
+psutil==5.9.6
+websocket-client==1.6.4 

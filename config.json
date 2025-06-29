@@ -1,0 +1,20 @@
+{
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": true,
+    "max_instances": 10,
+    "instance_timeout": 3600,
+    "instance_cleanup_interval": 300,
+    "telegram_url": "https://web.telegram.org/a/#6690063578",
+    "js_file_path": "js_modules/console_test.js",
+    "thread_pool_size": 4,
+    "headless": false,
+    "browser_timeout": 30,
+    "session_timeout": 10800,
+    "secret_key": "your-secret-key-here",
+    "log_level": "DEBUG",
+    "log_max_size": 52428800,
+    "log_backup_count": 10,
+    "max_login_attempts": 5,
+    "lockout_duration": 1800
+}

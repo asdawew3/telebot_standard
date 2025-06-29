@@ -1,0 +1,28 @@
+{
+    "host": "0.0.0.0",
+    "port": 5001,
+    "debug": false,
+    "server_url": "http://127.0.0.1:5000",
+    "server_timeout": 30,
+    "session_timeout": 10800,
+    "secret_key": "client-web-app-secret-key-2024",
+    "max_content_length": 16777216,
+    "allow_external_access": true,
+    "trusted_networks": [
+        "127.0.0.1",
+        "192.168.0.0/16",
+        "172.16.0.0/12",
+        "10.0.0.0/8"
+    ],
+    "max_login_attempts": 5,
+    "lockout_duration": 1800,
+    "log_level": "DEBUG",
+    "log_max_size": 52428800,
+    "log_backup_count": 10,
+    "theme": "dark",
+    "language": "zh_CN",
+    "auto_refresh_interval": 30,
+    "threaded": true,
+    "use_reloader": false,
+    "static_cache_timeout": 3600
+}

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Telegram Bot管理系统{% endblock %}</title>
+    
+    <!-- 基础样式 -->
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 基础样式 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 页面头部 */
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid #00ff00;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            color: #00ff00;
+            font-size: 28px;
+            font-weight: 300;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #333;
+            border-radius: 5px;
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        
+        /* 按钮样式 */
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #00cc00 0%, #009900 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #555 0%, #333 100%);
+            color: #e0e0e0;
+            border: 1px solid #666;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #666 0%, #444 100%);
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            color: #fff;
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+        }
+        
+        /* 表格样式 */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .table th,
+        .table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        .table th {
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ff00;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .table tbody tr:hover {
+            background: rgba(0, 255, 0, 0.1);
+        }
+        
+        /* 状态指示器 */
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-online {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+            border: 1px solid #00ff00;
+        }
+        
+        .status-offline {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+        }
+        
+        .status-loading {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+        
+        /* 消息提示 */
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid;
+        }
+        
+        .alert-success {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            border-left-color: #00ff00;
+        }
+        
+        .alert-error {
+            background: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+            border-left-color: #ff4444;
+        }
+        
+        .alert-warning {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+            border-left-color: #ffc107;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .navbar li {
+            margin: 0 15px;
+        }
+        
+        .navbar a {
+            color: #b0b0b0;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar a:hover,
+        .navbar a.active {
+            color: #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .table {
+                font-size: 14px;
+            }
+            
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navbar li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* 加载动画 */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #333;
+            border-radius: 50%;
+            border-top-color: #00ff00;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 隐藏元素 */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* 文本样式 */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-success {
+            color: #00ff00;
+        }
+        
+        .text-error {
+            color: #ff4444;
+        }
+        
+        .text-warning {
+            color: #ffc107;
+        }
+        
+        .text-muted {
+            color: #666;
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- 页面头部 -->
+    <div class="header">
+        <div class="container">
+            <h1>{% block page_title %}Telegram Bot管理系统{% endblock %}</h1>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    {% if show_navbar %}
+    <div class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}" {% if request.endpoint == 'dashboard' %}class="active"{% endif %}>控制台</a></li>
+                <li><a href="{{ url_for('instances_page') }}" {% if request.endpoint == 'instances_page' %}class="active"{% endif %}>实例管理</a></li>
+                <li><a href="{{ url_for('system_status') }}" {% if request.endpoint == 'system_status' %}class="active"{% endif %}>系统状态</a></li>
+                <li><a href="{{ url_for('logout_page') }}" class="btn btn-secondary">注销</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- 主要内容区域 -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <!-- 基础JavaScript -->
+    <script>
+        // 全局JavaScript函数
+        
+        // 显示提示消息
+        function showAlert(message, type = 'success') {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            
+            // 插入到页面顶部
+            const container = document.querySelector('.container');
+            container.insertBefore(alertDiv, container.firstChild);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3000);
+        }
+        
+        // AJAX请求封装
+        async function apiRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+                
+                return await response.json();
+            } catch (error) {
+                console.error('API请求失败:', error);
+                throw error;
+            }
+        }
+        
+        // 格式化时间
+        function formatTime(timestamp) {
+            return new Date(timestamp * 1000).toLocaleString('zh-CN');
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化页面
+            console.log('页面加载完成');
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

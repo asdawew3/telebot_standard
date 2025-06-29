@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}用户登录 - Telegram Bot管理系统{% endblock %}
+
+{% block page_title %}系统登录{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 50px auto;">
+    <h2 class="text-center" style="margin-bottom: 30px; color: #00ff00;">管理员登录</h2>
+    
+    <!-- 错误消息显示区域 -->
+    <div id="error-message" class="alert alert-error hidden"></div>
+    
+    <!-- 登录表单 -->
+    <form id="login-form">
+        <div class="form-group">
+            <label for="username" class="form-label">用户名</label>
+            <input type="text" id="username" name="username" class="form-input" required autocomplete="username">
+        </div>
+        
+        <div class="form-group">
+            <label for="password" class="form-label">密码</label>
+            <input type="password" id="password" name="password" class="form-input" required autocomplete="current-password">
+        </div>
+        
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary" id="login-btn">
+                <span id="login-text">登录系统</span>
+                <span id="login-loading" class="loading hidden"></span>
+            </button>
+        </div>
+    </form>
+    
+    <!-- 系统信息 -->
+    <div class="text-center" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+        <p class="text-muted" style="font-size: 14px;">
+            系统版本: v2.0 | 安全登录
+        </p>
+        <p class="text-muted" style="font-size: 12px;">
+            请使用管理员账户登录
+        </p>
+    </div>
+</div>
+
+<!-- 背景效果 -->
+<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;">
+    <canvas id="matrix-canvas"></canvas>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 矩阵背景效果
+function initMatrix() {
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 设置画布大小
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // 矩阵字符
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    
+    // 初始化雨滴
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+    
+    // 绘制矩阵效果
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#00ff00';
+        ctx.font = fontSize + 'px monospace';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    
+    setInterval(draw, 33);
+}
+
+// 登录表单处理
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('login-btn');
+    const loginText = document.getElementById('login-text');
+    const loginLoading = document.getElementById('login-loading');
+    const errorMessage = document.getElementById('error-message');
+    
+    // 获取表单数据
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
+    
+    // 验证输入
+    if (!username || !password) {
+        showError('请输入用户名和密码');
+        return;
+    }
+    
+    // 显示加载状态
+    loginBtn.disabled = true;
+    loginText.classList.add('hidden');
+    loginLoading.classList.remove('hidden');
+    errorMessage.classList.add('hidden');
+    
+    try {
+        // 发送登录请求
+        const response = await apiRequest('/api/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        });
+        
+        if (response.success) {
+            // 登录成功，跳转到仪表板
+            showAlert('登录成功，正在跳转...', 'success');
+            setTimeout(() => {
+                window.location.href = '/dashboard';
+            }, 1000);
+        } else {
+            // 登录失败，显示错误消息
+            showError(response.message || '登录失败');
+        }
+        
+    } catch (error) {
+        console.error('登录请求失败:', error);
+        showError('网络连接失败，请检查网络后重试');
+    } finally {
+        // 恢复按钮状态
+        loginBtn.disabled = false;
+        loginText.classList.remove('hidden');
+        loginLoading.classList.add('hidden');
+    }
+});
+
+// 显示错误消息
+function showError(message) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('hidden');
+    
+    // 3秒后自动隐藏
+    setTimeout(() => {
+        errorMessage.classList.add('hidden');
+    }, 3000);
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化矩阵背景
+    initMatrix();
+    
+    // 聚焦到用户名输入框
+    document.getElementById('username').focus();
+    
+    // 检查是否已经登录
+    checkLoginStatus();
+});
+
+// 检查登录状态
+async function checkLoginStatus() {
+    try {
+        const response = await apiRequest('/api/verify-token');
+        if (response.success) {
+            // 已经登录，直接跳转到仪表板
+            window.location.href = '/dashboard';
+        }
+    } catch (error) {
+        // 未登录或验证失败，保持在登录页面
+        console.log('用户未登录');
+    }
+}
+</script>
+{% endblock %} 

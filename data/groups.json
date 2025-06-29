@@ -1,0 +1,47 @@
+{
+  "default": {
+    "id": "default",
+    "name": "默认分组",
+    "description": "系统默认分组，用于未指定分组的实例",
+    "created_at": 1750900665.5149436,
+    "updated_at": 1750900665.5149436,
+    "is_active": true,
+    "max_instances": 10,
+    "parent_group": null,
+    "tags": [
+      "default",
+      "system"
+    ],
+    "metadata": {}
+  },
+  "test": {
+    "id": "test",
+    "name": "测试分组",
+    "description": "用于测试和开发的实例分组",
+    "created_at": 1750900665.5149865,
+    "updated_at": 1750900665.5149865,
+    "is_active": true,
+    "max_instances": 5,
+    "parent_group": null,
+    "tags": [
+      "test",
+      "development"
+    ],
+    "metadata": {}
+  },
+  "production": {
+    "id": "production",
+    "name": "生产分组",
+    "description": "生产环境实例分组",
+    "created_at": 1750900665.515024,
+    "updated_at": 1750900665.515024,
+    "is_active": true,
+    "max_instances": 20,
+    "parent_group": null,
+    "tags": [
+      "production",
+      "stable"
+    ],
+    "metadata": {}
+  }
+}

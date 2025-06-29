@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}系统错误 - Telegram Bot管理系统{% endblock %}
+
+{% block page_title %}系统错误{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 600px; margin: 50px auto; text-align: center;">
+    <div style="font-size: 72px; color: #ff4444; margin-bottom: 20px;">
+        {% if error_code == '404' %}
+        404
+        {% elif error_code == '403' %}
+        403
+        {% elif error_code == '500' %}
+        500
+        {% else %}
+        ERROR
+        {% endif %}
+    </div>
+    
+    <h2 style="color: #ff4444; margin-bottom: 30px;">
+        {% if error_code == '404' %}
+        页面未找到
+        {% elif error_code == '403' %}
+        访问被拒绝
+        {% elif error_code == '500' %}
+        内部服务器错误
+        {% elif error_code == 'PERMISSION_DENIED' %}
+        权限不足
+        {% else %}
+        系统错误
+        {% endif %}
+    </h2>
+    
+    <p style="color: #b0b0b0; font-size: 18px; margin-bottom: 30px;">
+        {{ error_message or '发生未知错误' }}
+    </p>
+    
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="javascript:history.back()" class="btn btn-secondary">返回上页</a>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">返回首页</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">控制台</a>
+        {% else %}
+        <a href="{{ url_for('login_page') }}" class="btn btn-secondary">重新登录</a>
+        {% endif %}
+    </div>
+    
+    {% if error_code %}
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+        <p class="text-muted" style="font-size: 14px;">
+            错误代码: {{ error_code }}
+        </p>
+        <p class="text-muted" style="font-size: 12px;">
+            如果问题持续存在，请联系系统管理员
+        </p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- 错误背景效果 -->
+<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.1;">
+    <div id="error-particles"></div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+#error-particles {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ff4444;
+    border-radius: 50%;
+    animation: float 10s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 错误页面粒子效果
+function createErrorParticles() {
+    const container = document.getElementById('error-particles');
+    if (!container) return;
+    
+    // 创建20个粒子
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // 随机位置和动画延迟
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        
+        container.appendChild(particle);
+    }
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    createErrorParticles();
+    
+    // 自动记录错误信息到控制台
+    console.error('页面错误:', {
+        code: '{{ error_code }}',
+        message: '{{ error_message }}',
+        url: window.location.href,
+        timestamp: new Date().toISOString()
+    });
+});
+</script>
+{% endblock %} 

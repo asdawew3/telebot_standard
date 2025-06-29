@@ -1,0 +1,53 @@
+{
+  "default": {
+    "id": "default",
+    "name": "默认资料",
+    "description": "系统默认用户资料，包含基础浏览器设置",
+    "created_at": 1751217550.0546973,
+    "updated_at": 1751217550.0546973,
+    "last_used": 1751217550.0546973,
+    "is_active": true,
+    "is_default": true,
+    "size_mb": 0.0,
+    "path": "profiles\\default",
+    "tags": [
+      "default",
+      "system"
+    ],
+    "metadata": {}
+  },
+  "clean": {
+    "id": "clean",
+    "name": "干净资料",
+    "description": "不包含任何缓存和cookie的干净资料",
+    "created_at": 1751217550.055135,
+    "updated_at": 1751217550.055135,
+    "last_used": 1751217550.055135,
+    "is_active": true,
+    "is_default": false,
+    "size_mb": 0.0,
+    "path": "profiles\\clean",
+    "tags": [
+      "clean",
+      "fresh"
+    ],
+    "metadata": {}
+  },
+  "test": {
+    "id": "test",
+    "name": "测试资料",
+    "description": "用于测试的用户资料",
+    "created_at": 1751217550.055463,
+    "updated_at": 1751217550.055463,
+    "last_used": 1751217550.055463,
+    "is_active": true,
+    "is_default": false,
+    "size_mb": 0.0,
+    "path": "profiles\\test",
+    "tags": [
+      "test",
+      "development"
+    ],
+    "metadata": {}
+  }
+}

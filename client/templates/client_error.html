@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错误 - Telegram自动化系统</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .error-container {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            width: 500px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #e57373;
+        }
+        
+        .error-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .error-message {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #aaaaaa;
+            line-height: 1.5;
+        }
+        
+        .error-details {
+            background-color: #252525;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            color: #e0e0e0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #4a6ed3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #3a5ec3;
+        }
+        
+        .btn-secondary {
+            background-color: #2a2a2a;
+            margin-left: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">⚠️</div>
+        
+        <h1 class="error-title">{{ error_title|default('发生错误') }}</h1>
+        
+        <div class="error-message">
+            {{ error_message|default('处理您的请求时发生了错误。请稍后重试或联系管理员。') }}
+        </div>
+        
+        {% if error_details %}
+        <div class="error-details">
+            {{ error_details }}
+        </div>
+        {% endif %}
+        
+        <div>
+            <a href="{{ url_for('index') }}" class="btn">返回首页</a>
+            {% if back_url %}
+            <a href="{{ back_url }}" class="btn btn-secondary">返回上一页</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html> 

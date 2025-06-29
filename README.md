@@ -21,11 +21,11 @@
 - 控制台管理器: 实现浏览器控制台的远程接管
 - DevTools客户端: 连接并控制远程浏览器实例
 ![image](https://github.com/user-attachments/assets/d45ecc26-40ff-496d-956e-700247ef5d34)
-S模块
+
+JS模块
 - 消息队列系统: 确保指令按序执行
 - 控制台控制系统: 实现控制台功能
 - 网络钩子: 拦截与修改网络请求
-
 ![image](https://github.com/user-attachments/assets/fe720849-a1ed-4830-92dd-e72c7625aaa8)
 
 

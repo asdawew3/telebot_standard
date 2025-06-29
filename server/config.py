@@ -30,8 +30,8 @@ class ServerConfig:
     instance_timeout: int = 3600         # 实例超时时间（秒）
     instance_cleanup_interval: int = 300 # 实例清理间隔（秒）
     
-    # Telegram相关配置
-    telegram_url: str = 'https://web.telegram.org/a/#6690063578'  # Telegram Web地址
+    # 浏览器初始URL配置
+    telegram_url: str = 'https://www.google.com'  # 浏览器初始加载地址
     js_file_path: str = 'js_modules/console_test.js'              # JavaScript文件路径
     
     # 线程池配置

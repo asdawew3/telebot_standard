@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>控制台 - Telegram自动化系统</title>
+    <title>控制台 - 浏览器自动化系统</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/console.css') }}">
     <style>
@@ -347,6 +347,48 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* URL设置表单 */
+        .url-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+            align-items: center;
+        }
+        
+        .url-form label {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .url-form input[type="url"] {
+            flex: 1;
+            padding: 6px 10px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .url-form button {
+            padding: 6px 12px;
+            background-color: #2c3a61;
+            color: #e0e0e0;
+            border: 1px solid #4a6ed3;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        
+        .url-form button:hover {
+            background-color: #3a4c7a;
+        }
     </style>
 </head>
 <body>
@@ -376,11 +418,19 @@
         
         <div class="console-container">
             <div class="console-header">
-                <h3 class="console-title" id="consoleTitle">控制台</h3>
+                <h2 class="console-title">控制台</h2>
                 <div class="console-actions">
-                    <button class="console-button connect" id="connectButton" disabled>连接控制台</button>
-                    <button class="console-button clear" id="clearButton" disabled>清空控制台</button>
+                    <button id="connectButton" class="console-button connect">连接</button>
+                    <button id="disconnectButton" class="console-button disconnect" disabled>断开</button>
+                    <button id="clearButton" class="console-button clear">清空</button>
                 </div>
+            </div>
+            
+            <!-- 添加URL设置表单 -->
+            <div class="url-form">
+                <label for="browserUrl">浏览器初始URL:</label>
+                <input type="url" id="browserUrl" placeholder="https://example.com" required>
+                <button id="setUrlButton">设置URL</button>
             </div>
             
             <div class="console-output" id="consoleOutput">
@@ -1221,6 +1271,56 @@
             
             console.log('事件处理器初始化完成');
         }
+
+        // 获取当前浏览器URL设置
+        function getCurrentBrowserUrl() {
+            fetch('/api/config/browser-url')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('browserUrl').value = data.url;
+                    } else {
+                        console.error('获取浏览器URL失败:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('获取浏览器URL请求失败:', error);
+                });
+        }
+        
+        // 设置浏览器URL
+        document.getElementById('setUrlButton').addEventListener('click', function() {
+            const url = document.getElementById('browserUrl').value;
+            if (!url) {
+                alert('请输入有效的URL');
+                return;
+            }
+            
+            fetch('/api/config/browser-url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('浏览器初始URL已更新');
+                } else {
+                    alert('更新失败: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('设置URL请求失败:', error);
+                alert('请求失败，请检查网络连接');
+            });
+        });
+        
+        // 页面加载时获取当前URL
+        document.addEventListener('DOMContentLoaded', function() {
+            getCurrentBrowserUrl();
+        });
     </script>
 </body>
 </html>

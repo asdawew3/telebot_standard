@@ -21,7 +21,6 @@ from .logger import get_server_logger
 from .auth import auth_manager, get_current_user_info
 from .instance_manager import instance_pool
 from .js_manager import get_js_manager
-from .config import config_manager
 
 # 获取服务端日志实例
 logger = get_server_logger()
@@ -403,87 +402,6 @@ def register_web_routes(app):
         else:
             logger.warning(f"DevTools调试功能禁用失败: {instance_id}, {result.get('message')}", "disable_devtools")
             return jsonify(result), 400
-
-    # 添加一个API端点，用于设置浏览器初始URL
-    @app.route('/api/config/browser-url', methods=['POST'])
-    @login_required
-    def set_browser_url():
-        """设置浏览器初始URL"""
-        logger.info(f"处理设置浏览器初始URL请求: {current_user.username}", "set_browser_url")
-        
-        try:
-            # 检查用户权限
-            if not auth_manager.check_user_permission('admin'):
-                logger.warning(f"用户无权限设置浏览器URL: {current_user.username}", "set_browser_url")
-                return jsonify({
-                    'success': False,
-                    'message': '权限不足，需要管理员权限'
-                }), 403
-            
-            # 获取请求数据
-            data = request.get_json()
-            if not data or 'url' not in data:
-                logger.warning("请求数据不完整，缺少URL参数", "set_browser_url")
-                return jsonify({
-                    'success': False,
-                    'message': '请求数据不完整，缺少URL参数'
-                }), 400
-            
-            new_url = data['url']
-            
-            # 验证URL格式
-            if not new_url.startswith(('http://', 'https://')):
-                logger.warning(f"URL格式无效: {new_url}", "set_browser_url")
-                return jsonify({
-                    'success': False,
-                    'message': 'URL格式无效，必须以http://或https://开头'
-                }), 400
-            
-            # 更新配置
-            config_manager.update_config(telegram_url=new_url)
-            
-            logger.info(f"浏览器初始URL已更新: {new_url}", "set_browser_url")
-            logger.operation("浏览器初始URL已更新", "set_browser_url", {
-                'username': current_user.username,
-                'new_url': new_url,
-                'old_url': config_manager.get_config().telegram_url
-            })
-            
-            return jsonify({
-                'success': True,
-                'message': '浏览器初始URL已更新',
-                'url': new_url
-            })
-            
-        except Exception as e:
-            logger.error("设置浏览器初始URL时发生异常", "set_browser_url", e)
-            return jsonify({
-                'success': False,
-                'message': f'设置浏览器初始URL时发生异常: {str(e)}'
-            }), 500
-
-    # 添加一个API端点，用于获取当前浏览器初始URL
-    @app.route('/api/config/browser-url', methods=['GET'])
-    @login_required
-    def get_browser_url():
-        """获取浏览器初始URL"""
-        logger.info(f"处理获取浏览器初始URL请求: {current_user.username}", "get_browser_url")
-        
-        try:
-            # 获取当前URL
-            current_url = config_manager.get_config().telegram_url
-            
-            return jsonify({
-                'success': True,
-                'url': current_url
-            })
-            
-        except Exception as e:
-            logger.error("获取浏览器初始URL时发生异常", "get_browser_url", e)
-            return jsonify({
-                'success': False,
-                'message': f'获取浏览器初始URL时发生异常: {str(e)}'
-            }), 500
 
     logger.info("Web界面路由注册完成", "register_web_routes")
 

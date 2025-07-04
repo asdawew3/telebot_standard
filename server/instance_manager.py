@@ -85,12 +85,12 @@ class InstanceMetadata:
         
         return data
 
-class BrowserInstance:
-    """浏览器实例类"""
+class TelegramInstance:
+    """Telegram实例类"""
     
     def __init__(self, instance_id: str, name: str = None, group_id: str = 'default', profile_id: str = 'default'):
         """
-        初始化浏览器实例
+        初始化Telegram实例
         
         Args:
             instance_id: 实例ID
@@ -107,7 +107,7 @@ class BrowserInstance:
         enhanced_logger = self.enhanced_logger
         
         # 记录实例创建
-        enhanced_logger.info(f"创建浏览器实例: {instance_id}", "__init__")
+        enhanced_logger.info(f"创建Telegram实例: {instance_id}", "__init__")
         enhanced_logger.debug(f"实例参数: name={name}, group_id={group_id}, profile_id={profile_id}", "__init__")
         
         # 基本属性
@@ -140,7 +140,7 @@ class BrowserInstance:
         self.network_fixer = get_chrome_network_fixer()
         self.devtools_manager = get_chrome_devtools_manager()
         
-        logger.info(f"浏览器实例初始化完成: {instance_id}", "BrowserInstance.__init__")
+        logger.info(f"Telegram实例初始化完成: {instance_id}", "TelegramInstance.__init__")
 
     def _is_ubuntu_environment(self) -> bool:
         """检测是否为Ubuntu环境（使用Ubuntu管理器）"""
@@ -923,9 +923,9 @@ class BrowserInstance:
                     
                 enhanced_logger.debug("浏览器初始化脚本执行完成", "initialize_browser")
                 
-                # 设置窗口大小并打开初始页面
+                # 设置窗口大小并打开Telegram
                 self.driver.set_window_size(1920, 1080)
-                enhanced_logger.info(f"正在加载初始页面: {self.config.telegram_url}", 
+                enhanced_logger.info(f"正在加载Telegram页面: {self.config.telegram_url}", 
                                    "initialize_browser")
                 
                 # 安全地加载页面，增加重试机制
@@ -1918,7 +1918,7 @@ class InstancePool:
                 instance_id = str(uuid.uuid4())
                 
                 # 创建实例对象
-                instance = BrowserInstance(
+                instance = TelegramInstance(
                     instance_id=instance_id,
                     name=name,
                     group_id=group_id,

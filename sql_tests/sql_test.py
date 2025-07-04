@@ -23,11 +23,11 @@ def load_config():
     # 默认配置
     return {
         "server": "127.0.0.1",
-        "database": "工商",
+        "database": "。。。",
         "username": "sa",
-        "password": "q2003123@ABS16545",
+        "password": "123456",
         "driver": "{ODBC Driver 17 for SQL Server}",
-        "table_name": "CompanyInfo",
+        "table_name": "。。。",
         "use_windows_auth": False
     }
 

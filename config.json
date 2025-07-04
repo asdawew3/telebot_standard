@@ -5,7 +5,7 @@
     "max_instances": 10,
     "instance_timeout": 3600,
     "instance_cleanup_interval": 300,
-    "telegram_url": "https://web.telegram.org/a/#6690063578",
+    "telegram_url": "https://web.telegram.org/a/",
     "js_file_path": "js_modules/console_test.js",
     "thread_pool_size": 4,
     "headless": false,

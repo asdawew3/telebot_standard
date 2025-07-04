@@ -8,6 +8,7 @@
 
 import os
 import sys
+import json
 import argparse
 from pathlib import Path
 
@@ -16,13 +17,39 @@ current_dir = Path(__file__).parent
 if str(current_dir) not in sys.path:
     sys.path.insert(0, str(current_dir))
 
+def load_client_config():
+    """加载客户端配置"""
+    config_file = os.path.join(current_dir, "client_config.json")
+    print(f"[INFO] 加载客户端配置: {config_file}")
+    
+    try:
+        if os.path.exists(config_file):
+            with open(config_file, 'r', encoding='utf-8') as f:
+                config = json.load(f)
+            print(f"[INFO] 客户端配置加载成功")
+            return config
+        else:
+            print(f"[WARNING] 客户端配置文件不存在: {config_file}，使用默认配置")
+            return {}
+    except Exception as e:
+        print(f"[ERROR] 加载客户端配置失败: {e}")
+        return {}
+
 def main():
     """主函数"""
+    # 加载客户端配置
+    client_config = load_client_config()
+    
+    # 获取默认配置值
+    default_port = client_config.get("port", 5001)
+    default_host = client_config.get("host", "127.0.0.1")
+    default_server_url = client_config.get("server_url", "http://127.0.0.1:5000")
+    
     # 解析命令行参数
     parser = argparse.ArgumentParser(description='启动Telegram自动化系统客户端Web应用')
-    parser.add_argument('--port', type=int, default=5001, help='客户端Web应用端口号')
-    parser.add_argument('--server-url', type=str, default='http://127.0.0.1:5000', help='服务器地址')
-    parser.add_argument('--host', type=str, default='127.0.0.1', help='主机地址')
+    parser.add_argument('--port', type=int, default=default_port, help='客户端Web应用端口号')
+    parser.add_argument('--server-url', type=str, default=default_server_url, help='服务器地址')
+    parser.add_argument('--host', type=str, default=default_host, help='主机地址')
     args = parser.parse_args()
     
     try:

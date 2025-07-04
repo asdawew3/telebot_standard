@@ -3,10 +3,11 @@
 
 import os
 import sys
+import json
 import subprocess
 import time
 import threading
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
 # ================================
 # 配置
@@ -16,7 +17,27 @@ REQUIREMENTS_FILE = 'requirements.txt'
 SERVER_SCRIPT = 'server.py'
 CLIENT_SCRIPT = 'client_web.py'
 SERVER_PORT = 5000
-CLIENT_PORT = 5001
+CLIENT_CONFIG_FILE = 'client_config.json'
+
+# ================================
+# 配置加载
+# ================================
+
+def load_client_config() -> Dict[str, Any]:
+    """加载客户端配置"""
+    try:
+        if os.path.exists(CLIENT_CONFIG_FILE):
+            print(f"加载客户端配置: {CLIENT_CONFIG_FILE}")
+            with open(CLIENT_CONFIG_FILE, 'r', encoding='utf-8') as f:
+                config = json.load(f)
+            print("客户端配置加载成功")
+            return config
+        else:
+            print(f"客户端配置文件不存在: {CLIENT_CONFIG_FILE}，使用默认值")
+            return {}
+    except Exception as e:
+        print(f"加载客户端配置失败: {e}")
+        return {}
 
 # ================================
 # 依赖检查和安装
@@ -95,10 +116,15 @@ def install_dependencies() -> bool:
 class ProcessManager:
     """进程管理器"""
     
-    def __init__(self):
+    def __init__(self, client_config: Dict[str, Any]):
         self.server_process: Optional[subprocess.Popen] = None
         self.client_process: Optional[subprocess.Popen] = None
         self.shutdown_event = threading.Event()
+        self.client_config = client_config
+        
+        # 获取客户端配置的端口和主机
+        self.client_port = self.client_config.get("port", 5001)
+        self.client_host = self.client_config.get("host", "0.0.0.0")
     
     def start_server(self) -> bool:
         """启动服务端"""
@@ -135,11 +161,15 @@ class ProcessManager:
         try:
             print("启动客户端Web应用...")
             
-            # 启动客户端Web应用，使用Python模块方式调用（支持对外开放）
+            # 使用从配置文件中读取的端口和主机
+            print(f"使用配置: 端口={self.client_port}, 主机={self.client_host}")
+            
+            # 启动客户端Web应用，使用客户端脚本启动（会自动读取配置文件）
             self.client_process = subprocess.Popen([
-                sys.executable, '-c',
-                'from client.client_web_app import run_client_web_app; '
-                f'run_client_web_app(port={CLIENT_PORT}, server_url="http://127.0.0.1:{SERVER_PORT}", host="0.0.0.0")'
+                sys.executable, CLIENT_SCRIPT,
+                '--host', self.client_host,
+                '--port', str(self.client_port),
+                '--server-url', f'http://127.0.0.1:{SERVER_PORT}'
             ], stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                text=True, bufsize=1, universal_newlines=True)
             
@@ -167,11 +197,12 @@ class ProcessManager:
     def _monitor_output(self, process: subprocess.Popen, name: str):
         """监控进程输出"""
         try:
-            for line in iter(process.stdout.readline, ''):
-                if line.strip():
-                    print(f"[{name}] {line.rstrip()}")
-                if self.shutdown_event.is_set():
-                    break
+            if process and process.stdout:
+                for line in iter(process.stdout.readline, ''):
+                    if line.strip():
+                        print(f"[{name}] {line.rstrip()}")
+                    if self.shutdown_event.is_set():
+                        break
         except Exception:
             pass
     
@@ -219,13 +250,13 @@ def print_banner():
     print("Telegram自动化系统启动器")
     print("=" * 60)
 
-def print_urls():
+def print_urls(server_port, client_port):
     """打印访问地址"""
     print("\n" + "=" * 60)
     print("系统启动完成")
     print("=" * 60)
-    print(f"服务端管理界面: http://localhost:{SERVER_PORT}")
-    print(f"客户端操作界面: http://localhost:{CLIENT_PORT}")
+    print(f"服务端管理界面: http://localhost:{server_port}")
+    print(f"客户端操作界面: http://localhost:{client_port}")
     print("=" * 60)
     print("\n按 Ctrl+C 退出系统")
 
@@ -242,6 +273,10 @@ def main():
     for filename in required_files:
         if not check_file_exists(filename):
             sys.exit(1)
+    
+    # 加载客户端配置
+    client_config = load_client_config()
+    client_port = client_config.get("port", 5001)
     
     # 检查客户端目录
     client_dir = 'client'
@@ -279,29 +314,29 @@ def main():
     print("依赖检查通过")
     
     # 创建进程管理器
-    process_manager = ProcessManager()
+    manager = ProcessManager(client_config)
     
     try:
         # 启动服务端
-        if not process_manager.start_server():
+        if not manager.start_server():
             print("服务端启动失败，退出")
             sys.exit(1)
         
         # 启动客户端
-        if not process_manager.start_client():
+        if not manager.start_client():
             print("客户端启动失败，但服务端继续运行")
         
-        print_urls()
+        print_urls(SERVER_PORT, client_port)
         
         # 等待用户中断或进程异常
-        process_manager.wait()
+        manager.wait()
         
     except KeyboardInterrupt:
         print("\n收到中断信号...")
     except Exception as e:
         print(f"系统运行异常: {e}")
     finally:
-        process_manager.stop_all()
+        manager.stop_all()
 
 if __name__ == '__main__':
     main() 

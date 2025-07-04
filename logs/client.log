@@ -1,0 +1,158 @@
+2025-07-04 18:42:53 [INFO] [client_logger] [ClientLogger.__init__] 客户端日志系统初始化完成
+2025-07-04 18:42:53 [INFO] [client_logger] [run_client_web_app] 启动客户端Web应用: port=5005, server_url=http://127.0.0.1:5000, host=0.0.0.0
+2025-07-04 18:42:53 [DEBUG] [client_logger] [check_port_available] 检查端口 5005 是否可用
+2025-07-04 18:42:53 [DEBUG] [client_logger] [check_port_available] 端口 5005 可用
+2025-07-04 18:42:53 [INFO] [client_logger] [run_client_web_app] 会话存储目录已存在，包含 1 个会话文件
+2025-07-04 18:42:53 [DEBUG] [client_logger] [run_client_web_app] 会话文件权限检查完成
+2025-07-04 18:42:53 [DEBUG] [client_logger] [run_client_web_app] 设置会话目录权限: 0700
+2025-07-04 18:42:53 [INFO] [client_logger] [create_app] 创建客户端Web应用
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] 服务器地址: http://127.0.0.1:5000
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] 会话相关配置: COOKIE_NAME=telebot_client_session, SAMESITE=Lax, PERMANENT_LIFETIME=7776000秒
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] Flask-Session已初始化
+2025-07-04 18:42:53 [DEBUG] [client_logger] [SessionManager.__init__] 初始化会话管理器
+2025-07-04 18:42:53 [DEBUG] [client_logger] [SessionManager.init_app] 初始化会话管理器与Flask应用
+2025-07-04 18:42:53 [DEBUG] [client_logger] [SessionManager.init_app] 会话配置: 类型=filesystem, 持久化=True, 有效期=7776000秒
+2025-07-04 18:42:53 [DEBUG] [client_logger] [SessionManager.init_app] 现有会话文件数量: 1
+2025-07-04 18:42:53 [INFO] [client_logger] [SessionManager.__init__] 会话管理器初始化完成
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] 会话管理器已初始化
+2025-07-04 18:42:53 [INFO] [client_logger] [ClientAPI.__init__] 初始化客户端API通信模块
+2025-07-04 18:42:53 [DEBUG] [client_logger] [ClientAPI.__init__] 服务器地址: http://127.0.0.1:5000
+2025-07-04 18:42:53 [INFO] [client_logger] [ClientAPI.__init__] 客户端API通信模块初始化完成
+2025-07-04 18:42:53 [DEBUG] [client_logger] [ClientAPI.__init__] 认证状态初始化: is_authenticated=False, current_token=None
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] API客户端已创建
+2025-07-04 18:42:53 [INFO] [client_logger] [__init__] 初始化控制台管理器
+2025-07-04 18:42:53 [DEBUG] [client_logger] [__init__] 控制台管理器初始化完成
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] 控制台管理器已创建
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] SocketIO已创建，配置: async_mode=threading, manage_session=False
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] 控制台回调已设置
+2025-07-04 18:42:53 [DEBUG] [client_logger] [register_routes] 开始注册路由
+2025-07-04 18:42:53 [DEBUG] [client_logger] [register_routes] 路由注册完成
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] 路由已注册
+2025-07-04 18:42:53 [DEBUG] [client_logger] [register_socketio_events] 开始注册SocketIO事件
+2025-07-04 18:42:53 [DEBUG] [client_logger] [register_socketio_events] SocketIO事件注册完成
+2025-07-04 18:42:53 [DEBUG] [client_logger] [create_app] SocketIO事件已注册
+2025-07-04 18:42:53 [INFO] [client_logger] [create_app] 客户端Web应用创建完成
+2025-07-04 18:42:53 [INFO] [client_logger] [run_client_web_app] 会话配置: 类型=filesystem, 持久化=True, 有效期=7776000秒, Cookie名称=telebot_client_session
+2025-07-04 18:42:53 [INFO] [client_logger] [run_client_web_app] 客户端Web应用开始运行: http://0.0.0.0:5005
+2025-07-04 18:42:53 [DEBUG] [client_logger] [run_client_web_app] SocketIO配置: async_mode=threading, manage_session=False
+2025-07-04 18:43:03 [DEBUG] [client_logger] [before_request] 收到请求: GET /
+2025-07-04 18:43:03 [DEBUG] [client_logger] [before_request] 当前会话ID=6cuTDGxTaEIzBC-MbfPDxnzD74Kt6av0HJLsJSWzPhk, Keys=['_permanent']
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:03 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:03 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:03 [WARNING] [client_logger] [before_request] 会话验证失败: 未登录状态, 用户=未知
+2025-07-04 18:43:03 [WARNING] [client_logger] [before_request] 会话验证失败，重定向到登录
+2025-07-04 18:43:03 [DEBUG] [client_logger] [before_request] 收到请求: GET /login
+2025-07-04 18:43:03 [DEBUG] [client_logger] [before_request] 当前会话ID=cl8yizK906eTfdanMxSx420LK4GXfCN_kapVNRsZLZc, Keys=['_permanent']
+2025-07-04 18:43:03 [DEBUG] [client_logger] [login] 访问登录页面: method=GET
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:03 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:03 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:03 [DEBUG] [client_logger] [before_request] 收到请求: GET /favicon.ico
+2025-07-04 18:43:03 [DEBUG] [client_logger] [before_request] 当前会话ID=DGOMCMZQewcj3z696FxpSdgAI5t94pFPilRUNJaPIoA, Keys=['_permanent']
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:03 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:03 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:03 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:03 [WARNING] [client_logger] [before_request] 会话验证失败: 未登录状态, 用户=未知
+2025-07-04 18:43:03 [WARNING] [client_logger] [before_request] 会话验证失败，重定向到登录
+2025-07-04 18:43:04 [DEBUG] [client_logger] [before_request] 收到请求: GET /login
+2025-07-04 18:43:04 [DEBUG] [client_logger] [before_request] 当前会话ID=XgatZS-GeKqM29lpt2U2dJty9eS4aLWHcYHz8okxkrg, Keys=['_permanent']
+2025-07-04 18:43:04 [DEBUG] [client_logger] [login] 访问登录页面: method=GET
+2025-07-04 18:43:04 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:04 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:04 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:04 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:04 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:26 [INFO] [client_logger] [ClientLogger.__init__] 客户端日志系统初始化完成
+2025-07-04 18:43:26 [INFO] [client_logger] [run_client_web_app] 启动客户端Web应用: port=5005, server_url=http://127.0.0.1:5000, host=0.0.0.0
+2025-07-04 18:43:26 [DEBUG] [client_logger] [check_port_available] 检查端口 5005 是否可用
+2025-07-04 18:43:26 [DEBUG] [client_logger] [check_port_available] 端口 5005 可用
+2025-07-04 18:43:26 [INFO] [client_logger] [run_client_web_app] 会话存储目录已存在，包含 1 个会话文件
+2025-07-04 18:43:26 [DEBUG] [client_logger] [run_client_web_app] 会话文件权限检查完成
+2025-07-04 18:43:26 [DEBUG] [client_logger] [run_client_web_app] 设置会话目录权限: 0700
+2025-07-04 18:43:26 [INFO] [client_logger] [create_app] 创建客户端Web应用
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] 服务器地址: http://127.0.0.1:5000
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] 会话相关配置: COOKIE_NAME=telebot_client_session, SAMESITE=Lax, PERMANENT_LIFETIME=7776000秒
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] Flask-Session已初始化
+2025-07-04 18:43:26 [DEBUG] [client_logger] [SessionManager.__init__] 初始化会话管理器
+2025-07-04 18:43:26 [DEBUG] [client_logger] [SessionManager.init_app] 初始化会话管理器与Flask应用
+2025-07-04 18:43:26 [DEBUG] [client_logger] [SessionManager.init_app] 会话配置: 类型=filesystem, 持久化=True, 有效期=7776000秒
+2025-07-04 18:43:26 [DEBUG] [client_logger] [SessionManager.init_app] 现有会话文件数量: 1
+2025-07-04 18:43:26 [INFO] [client_logger] [SessionManager.__init__] 会话管理器初始化完成
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] 会话管理器已初始化
+2025-07-04 18:43:26 [INFO] [client_logger] [ClientAPI.__init__] 初始化客户端API通信模块
+2025-07-04 18:43:26 [DEBUG] [client_logger] [ClientAPI.__init__] 服务器地址: http://127.0.0.1:5000
+2025-07-04 18:43:26 [INFO] [client_logger] [ClientAPI.__init__] 客户端API通信模块初始化完成
+2025-07-04 18:43:26 [DEBUG] [client_logger] [ClientAPI.__init__] 认证状态初始化: is_authenticated=False, current_token=None
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] API客户端已创建
+2025-07-04 18:43:26 [INFO] [client_logger] [__init__] 初始化控制台管理器
+2025-07-04 18:43:26 [DEBUG] [client_logger] [__init__] 控制台管理器初始化完成
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] 控制台管理器已创建
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] SocketIO已创建，配置: async_mode=threading, manage_session=False
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] 控制台回调已设置
+2025-07-04 18:43:26 [DEBUG] [client_logger] [register_routes] 开始注册路由
+2025-07-04 18:43:26 [DEBUG] [client_logger] [register_routes] 路由注册完成
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] 路由已注册
+2025-07-04 18:43:26 [DEBUG] [client_logger] [register_socketio_events] 开始注册SocketIO事件
+2025-07-04 18:43:26 [DEBUG] [client_logger] [register_socketio_events] SocketIO事件注册完成
+2025-07-04 18:43:26 [DEBUG] [client_logger] [create_app] SocketIO事件已注册
+2025-07-04 18:43:26 [INFO] [client_logger] [create_app] 客户端Web应用创建完成
+2025-07-04 18:43:26 [INFO] [client_logger] [run_client_web_app] 会话配置: 类型=filesystem, 持久化=True, 有效期=7776000秒, Cookie名称=telebot_client_session
+2025-07-04 18:43:26 [INFO] [client_logger] [run_client_web_app] 客户端Web应用开始运行: http://0.0.0.0:5005
+2025-07-04 18:43:26 [DEBUG] [client_logger] [run_client_web_app] SocketIO配置: async_mode=threading, manage_session=False
+2025-07-04 18:43:32 [DEBUG] [client_logger] [before_request] 收到请求: GET /login
+2025-07-04 18:43:32 [DEBUG] [client_logger] [before_request] 当前会话ID=WL-xDcotqv3CSOzT4_PD-4Ism_Cvth24TpVhGXzgq0Q, Keys=['_permanent']
+2025-07-04 18:43:32 [DEBUG] [client_logger] [login] 访问登录页面: method=GET
+2025-07-04 18:43:32 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:32 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:32 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:32 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:32 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:32 [DEBUG] [client_logger] [before_request] 收到请求: GET /favicon.ico
+2025-07-04 18:43:32 [DEBUG] [client_logger] [before_request] 当前会话ID=r2qA7K4GfjPTp9IJFiKYPSXipakfrmIjBFcplte3404, Keys=['_permanent']
+2025-07-04 18:43:32 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:32 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:32 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:32 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:32 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:32 [WARNING] [client_logger] [before_request] 会话验证失败: 未登录状态, 用户=未知
+2025-07-04 18:43:32 [WARNING] [client_logger] [before_request] 会话验证失败，重定向到登录
+2025-07-04 18:43:33 [DEBUG] [client_logger] [before_request] 收到请求: GET /login
+2025-07-04 18:43:33 [DEBUG] [client_logger] [before_request] 当前会话ID=qfA4Uwloj8DY_2xOsARe4OcQZ-enQ6gZ0iTBAU1ErRg, Keys=['_permanent']
+2025-07-04 18:43:33 [DEBUG] [client_logger] [login] 访问登录页面: method=GET
+2025-07-04 18:43:33 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:33 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:33 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:33 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:33 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:34 [DEBUG] [client_logger] [before_request] 收到请求: GET /login
+2025-07-04 18:43:34 [DEBUG] [client_logger] [before_request] 当前会话ID=psu4yzo6hYAChlDR3Ft_UTBZCQSB2W767_5VxByuaQg, Keys=['_permanent']
+2025-07-04 18:43:34 [DEBUG] [client_logger] [login] 访问登录页面: method=GET
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:34 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:34 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:34 [DEBUG] [client_logger] [before_request] 收到请求: GET /favicon.ico
+2025-07-04 18:43:34 [DEBUG] [client_logger] [before_request] 当前会话ID=vibn-1AXtuTGN_dEr7k_3-Qgp53NFYMziK3RZG89ULA, Keys=['_permanent']
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:34 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:34 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False
+2025-07-04 18:43:34 [WARNING] [client_logger] [before_request] 会话验证失败: 未登录状态, 用户=未知
+2025-07-04 18:43:34 [WARNING] [client_logger] [before_request] 会话验证失败，重定向到登录
+2025-07-04 18:43:34 [DEBUG] [client_logger] [before_request] 收到请求: GET /login
+2025-07-04 18:43:34 [DEBUG] [client_logger] [before_request] 当前会话ID=ZA3J9qzcf4QtSbpFknPf2-awX72bXrKx-hNMm0mBUG0, Keys=['_permanent']
+2025-07-04 18:43:34 [DEBUG] [client_logger] [login] 访问登录页面: method=GET
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 验证会话令牌
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 当前会话令牌: 不存在, 长度: 0, 无过期时间
+2025-07-04 18:43:34 [DEBUG] [client_logger] [SessionManager.verify_session] 验证会话状态
+2025-07-04 18:43:34 [WARNING] [client_logger] [SessionManager.verify_session] 会话对象不存在
+2025-07-04 18:43:34 [DEBUG] [client_logger] [verify_session_token] 会话管理器验证结果: False

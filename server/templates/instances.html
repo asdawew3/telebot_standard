@@ -1,20 +1,343 @@
 {% extends "base.html" %}
+
 {% set show_navbar = true %}
 
 {% block title %}实例管理 - Telegram Bot管理系统{% endblock %}
 
 {% block page_title %}实例管理{% endblock %}
 
+{% block extra_css %}
+<style>
+/* 实例管理页面样式 */
+.instance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.instance-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a6ed3;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+.instance-table {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-header {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666666;
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.empty-state-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.empty-state-description {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+@media (max-width: 768px) {
+    .instance-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .instance-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card">
-    <h3 style="color: #00ff00; margin-bottom: 20px;">[INSTANCES] 实例管理</h3>
-    <div class="text-center" style="padding: 40px;">
-        <div style="color: #666; font-size: 18px; margin-bottom: 10px;">
-            [INFO] 实例管理功能开发中
+<!-- 页面头部 -->
+<div class="instance-header">
+    <div>
+        <h2 style="margin: 0; color: #ffffff;">实例管理</h2>
+        <p style="margin: 5px 0 0 0; color: #aaaaaa;">管理和监控所有Chrome浏览器实例</p>
+    </div>
+    <div>
+        <button class="btn btn-primary" onclick="showCreateModal()">
+            📱 创建实例
+        </button>
+    </div>
+</div>
+
+<!-- 实例统计 -->
+<div class="instance-stats">
+    <div class="stat-card">
+        <div class="stat-number" id="total-instances">0</div>
+        <div class="stat-label">总实例数</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="running-instances">0</div>
+        <div class="stat-label">运行中</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="error-instances">0</div>
+        <div class="stat-label">错误状态</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="memory-usage">0%</div>
+        <div class="stat-label">内存使用率</div>
+    </div>
+</div>
+
+<!-- 实例列表 -->
+<div class="instance-table">
+    <div class="table-header">
+        <h3 style="margin: 0; color: #ffffff;">实例列表</h3>
+        <div class="table-actions">
+            <button class="btn btn-secondary btn-sm" onclick="refreshInstances()">
+                🔄 刷新
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="showCreateModal()">
+                ➕ 新建实例
+            </button>
         </div>
-        <div style="color: #999; font-size: 14px;">
-            此页面将显示所有Bot实例的状态和管理功能
+    </div>
+    
+    <div id="instances-container">
+        <div class="empty-state">
+            <div class="empty-state-icon">📱</div>
+            <div class="empty-state-title">暂无实例</div>
+            <div class="empty-state-description">
+                还没有创建任何实例。创建一个新的Chrome浏览器实例来开始使用Telegram自动化功能。
+            </div>
+            <button class="btn btn-primary" onclick="showCreateModal()">
+                创建第一个实例
+            </button>
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    loadInstanceData();
+    
+    // 定时刷新数据（每30秒）
+    setInterval(loadInstanceData, 30000);
+});
+
+// 加载实例数据
+async function loadInstanceData() {
+    try {
+        // 获取实例列表
+        const response = await apiRequest('/api/instances');
+        if (response.success) {
+            updateInstanceStats(response.data);
+            renderInstanceTable(response.data);
+        } else {
+            showAlert('加载实例数据失败: ' + response.message, 'error');
+        }
+    } catch (error) {
+        console.error('加载实例数据失败:', error);
+        showAlert('加载实例数据失败', 'error');
+    }
+}
+
+// 更新实例统计
+function updateInstanceStats(instances) {
+    const total = instances.length;
+    const running = instances.filter(i => i.status === 'ready').length;
+    const error = instances.filter(i => i.status === 'error').length;
+    
+    document.getElementById('total-instances').textContent = total;
+    document.getElementById('running-instances').textContent = running;
+    document.getElementById('error-instances').textContent = error;
+    
+    // 模拟内存使用率
+    document.getElementById('memory-usage').textContent = '0%';
+}
+
+// 渲染实例表格
+function renderInstanceTable(instances) {
+    const container = document.getElementById('instances-container');
+    
+    if (!instances || instances.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">📱</div>
+                <div class="empty-state-title">暂无实例</div>
+                <div class="empty-state-description">
+                    还没有创建任何实例。创建一个新的Chrome浏览器实例来开始使用Telegram自动化功能。
+                </div>
+                <button class="btn btn-primary" onclick="showCreateModal()">
+                    创建第一个实例
+                </button>
+            </div>
+        `;
+        return;
+    }
+    
+    // 渲染实例表格
+    const tableHTML = `
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>实例名称</th>
+                    <th>状态</th>
+                    <th>分组</th>
+                    <th>用户资料</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${instances.map(instance => `
+                    <tr>
+                        <td>${instance.name}</td>
+                        <td>
+                            <span class="status status-${getStatusClass(instance.status)}">
+                                ${getStatusText(instance.status)}
+                            </span>
+                        </td>
+                        <td>${instance.group_id || 'default'}</td>
+                        <td>${instance.profile_id || 'default'}</td>
+                        <td>${formatTime(instance.created_at)}</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" onclick="viewInstance('${instance.id}')">
+                                查看
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="destroyInstance('${instance.id}')">
+                                销毁
+                            </button>
+                        </td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+    
+    container.innerHTML = tableHTML;
+}
+
+// 获取状态CSS类
+function getStatusClass(status) {
+    const statusMap = {
+        'ready': 'online',
+        'error': 'offline',
+        'initializing': 'loading',
+        'terminated': 'offline'
+    };
+    return statusMap[status] || 'loading';
+}
+
+// 获取状态文本
+function getStatusText(status) {
+    const statusMap = {
+        'ready': '运行中',
+        'error': '错误',
+        'initializing': '初始化',
+        'terminated': '已终止'
+    };
+    return statusMap[status] || status;
+}
+
+// 刷新实例列表
+function refreshInstances() {
+    loadInstanceData();
+}
+
+// 显示创建实例对话框
+function showCreateModal() {
+    showAlert('创建实例功能开发中...', 'warning');
+}
+
+// 查看实例详情
+function viewInstance(instanceId) {
+    showAlert('查看实例功能开发中...', 'warning');
+}
+
+// 销毁实例
+async function destroyInstance(instanceId) {
+    if (!confirm('确定要销毁这个实例吗？此操作不可逆。')) {
+        return;
+    }
+    
+    try {
+        const response = await apiRequest(`/api/instances/${instanceId}`, {
+            method: 'DELETE'
+        });
+        
+        if (response.success) {
+            showAlert('实例销毁成功', 'success');
+            loadInstanceData();
+        } else {
+            showAlert('销毁实例失败: ' + response.message, 'error');
+        }
+    } catch (error) {
+        console.error('销毁实例失败:', error);
+        showAlert('销毁实例失败', 'error');
+    }
+}
+</script>
+{% endblock %}

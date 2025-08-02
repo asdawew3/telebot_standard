@@ -45,9 +45,9 @@ try:
     
     print("[DEBUG] 所有服务器模块导入完成，正在初始化日志系统...")
     
-    # 立即获取日志实例以便后续使用
-    logger = get_server_logger()
-    print("[DEBUG] 服务端日志系统初始化完成")
+    # 立即获取日志实例以便后续使用（启动时清空日志文件）
+    logger = get_server_logger(clear_on_start=True)
+    print("[DEBUG] 服务端日志系统初始化完成（已清空历史日志）")
     
     # 记录模块导入成功到日志文件
     logger.info("服务器模块导入完成", "main")

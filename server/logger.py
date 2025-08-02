@@ -19,13 +19,14 @@ from logging.handlers import RotatingFileHandler
 class SystemLogger:
     """系统日志管理器"""
     
-    def __init__(self, log_type: str = 'server', log_dir: str = 'logs'):
+    def __init__(self, log_type: str = 'server', log_dir: str = 'logs', clear_on_start: bool = False):
         """
         初始化日志管理器
         
         Args:
             log_type: 日志类型 ('server' 或 'client')
             log_dir: 日志目录
+            clear_on_start: 是否在启动时清空日志文件
         """
         # 设置日志类型和目录
         self.log_type = log_type  # 记录日志类型用于标识
@@ -35,11 +36,68 @@ class SystemLogger:
         self.error_logger = None  # 错误日志记录器
         self.operation_logger = None  # 操作日志记录器
         
-        # 初始化日志系统
-        self._setup_logging()
+        # 创建日志目录
+        if not os.path.exists(self.log_dir):
+            os.makedirs(self.log_dir)
+        
+        # 如果启动时需要清空日志文件，先清空再设置
+        if clear_on_start:
+            self._clear_log_files()
+        else:
+            # 正常初始化日志系统
+            self._setup_logging()
         
         # 记录初始化完成
         self.info("日志系统初始化完成", "SystemLogger.__init__")
+    
+    def _clear_log_files(self):
+        """清空当前类型的所有日志文件"""
+        try:
+            print(f"开始清空{self.log_type}日志文件...")
+            
+            # 先关闭所有现有的日志处理器
+            if self.logger:
+                for handler in self.logger.handlers[:]:
+                    handler.close()
+                    self.logger.removeHandler(handler)
+            if self.detail_logger:
+                for handler in self.detail_logger.handlers[:]:
+                    handler.close()
+                    self.detail_logger.removeHandler(handler)
+            if self.error_logger:
+                for handler in self.error_logger.handlers[:]:
+                    handler.close()
+                    self.error_logger.removeHandler(handler)
+            if self.operation_logger:
+                for handler in self.operation_logger.handlers[:]:
+                    handler.close()
+                    self.operation_logger.removeHandler(handler)
+            
+            # 定义要清空的日志文件列表
+            log_files = [
+                f'{self.log_type}_main.log',
+                f'{self.log_type}_detail.log', 
+                f'{self.log_type}_error.log',
+                f'{self.log_type}_operation.log'
+            ]
+            
+            # 遍历并清空每个日志文件
+            for log_file in log_files:
+                log_path = os.path.join(self.log_dir, log_file)
+                try:
+                    # 直接创建空文件（覆盖原文件）
+                    with open(log_path, 'w', encoding='utf-8') as f:
+                        f.write('')  # 清空文件内容
+                    print(f"已清空日志文件: {log_path}")
+                except Exception as e:
+                    print(f"清空日志文件失败 {log_path}: {e}")
+            
+            # 重新设置日志配置
+            self._setup_logging()
+            print(f"{self.log_type}日志文件清空完成")
+                    
+        except Exception as e:
+            print(f"清空日志文件过程中发生错误: {e}")
     
     def _setup_logging(self):
         """设置日志配置"""
@@ -48,14 +106,11 @@ class SystemLogger:
             if not os.path.exists(self.log_dir):
                 os.makedirs(self.log_dir)  # 创建日志目录
                 
-            # 获取当前时间用于文件名
-            current_date = datetime.now().strftime('%Y%m%d')
-            
-            # 设置日志文件路径
-            main_log_file = os.path.join(self.log_dir, f'{self.log_type}_main_{current_date}.log')
-            detail_log_file = os.path.join(self.log_dir, f'{self.log_type}_detail_{current_date}.log')
-            error_log_file = os.path.join(self.log_dir, f'{self.log_type}_error_{current_date}.log')
-            operation_log_file = os.path.join(self.log_dir, f'{self.log_type}_operation_{current_date}.log')
+            # 设置日志文件路径（不使用日期后缀）
+            main_log_file = os.path.join(self.log_dir, f'{self.log_type}_main.log')
+            detail_log_file = os.path.join(self.log_dir, f'{self.log_type}_detail.log')
+            error_log_file = os.path.join(self.log_dir, f'{self.log_type}_error.log')
+            operation_log_file = os.path.join(self.log_dir, f'{self.log_type}_operation.log')
             
             # 创建日志格式
             detailed_formatter = logging.Formatter(
@@ -331,24 +386,30 @@ _server_logger = None
 _client_logger = None
 _logger_lock = threading.Lock()
 
-def get_server_logger() -> SystemLogger:
+def get_server_logger(clear_on_start: bool = False) -> SystemLogger:
     """获取服务端日志实例（单例模式）"""
     global _server_logger
     
     # 使用线程锁确保线程安全
     with _logger_lock:
         if _server_logger is None:
-            _server_logger = SystemLogger('server', 'logs')  # 创建服务端日志实例
+            _server_logger = SystemLogger('server', 'logs', clear_on_start)  # 创建服务端日志实例
+        elif clear_on_start:
+            # 如果需要清空且实例已存在，直接清空文件
+            _server_logger._clear_log_files()
         return _server_logger
 
-def get_client_logger() -> SystemLogger:
+def get_client_logger(clear_on_start: bool = False) -> SystemLogger:
     """获取客户端日志实例（单例模式）"""
     global _client_logger
     
     # 使用线程锁确保线程安全  
     with _logger_lock:
         if _client_logger is None:
-            _client_logger = SystemLogger('client', 'logs')  # 创建客户端日志实例
+            _client_logger = SystemLogger('client', 'logs', clear_on_start)  # 创建客户端日志实例
+        elif clear_on_start:
+            # 如果需要清空且实例已存在，直接清空文件
+            _client_logger._clear_log_files()
         return _client_logger
 
 # 便捷的日志函数

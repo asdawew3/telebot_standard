@@ -1,15 +1,76 @@
 {% extends "base.html" %}
 
+{% set show_navbar = false %}
+
 {% block title %}用户登录 - Telegram Bot管理系统{% endblock %}
 
-{% block page_title %}系统登录{% endblock %}
+{% block page_title %}用户登录{% endblock %}
+
+{% block extra_css %}
+<style>
+/* 登录页面特殊样式 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header {
+    display: none;
+}
+
+.container {
+    max-width: 400px;
+    padding: 0;
+}
+
+.login-container {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    color: #ffffff;
+}
+
+.login-header p {
+    margin-top: 8px;
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+.system-info {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666666;
+}
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="card" style="max-width: 400px; margin: 50px auto;">
-    <h2 class="text-center" style="margin-bottom: 30px; color: #00ff00;">管理员登录</h2>
+<div class="login-container">
+    <div class="login-header">
+        <h1>Telegram自动化系统</h1>
+        <p>管理员登录</p>
+    </div>
     
     <!-- 错误消息显示区域 -->
     <div id="error-message" class="alert alert-error hidden"></div>
+    
+    <!-- 成功消息显示区域 -->
+    <div id="success-message" class="alert alert-success hidden"></div>
     
     <!-- 登录表单 -->
     <form id="login-form">
@@ -23,7 +84,7 @@
             <input type="password" id="password" name="password" class="form-input" required autocomplete="current-password">
         </div>
         
-        <div class="form-group text-center">
+        <div class="form-group">
             <button type="submit" class="btn btn-primary" id="login-btn">
                 <span id="login-text">登录系统</span>
                 <span id="login-loading" class="loading hidden"></span>
@@ -31,72 +92,15 @@
         </div>
     </form>
     
-    <!-- 系统信息 -->
-    <div class="text-center" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
-        <p class="text-muted" style="font-size: 14px;">
-            系统版本: v2.0 | 安全登录
-        </p>
-        <p class="text-muted" style="font-size: 12px;">
-            请使用管理员账户登录
-        </p>
+    <div class="system-info">
+        Telegram自动化系统 &copy; 2023-2024<br>
+        系统版本: v2.0 | 安全登录
     </div>
-</div>
-
-<!-- 背景效果 -->
-<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;">
-    <canvas id="matrix-canvas"></canvas>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-// 矩阵背景效果
-function initMatrix() {
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // 设置画布大小
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // 矩阵字符
-    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = [];
-    
-    // 初始化雨滴
-    for (let x = 0; x < columns; x++) {
-        drops[x] = 1;
-    }
-    
-    // 绘制矩阵效果
-    function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.fillStyle = '#00ff00';
-        ctx.font = fontSize + 'px monospace';
-        
-        for (let i = 0; i < drops.length; i++) {
-            const text = chars[Math.floor(Math.random() * chars.length)];
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-    }
-    
-    setInterval(draw, 33);
-}
-
 // 登录表单处理
 document.getElementById('login-form').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -106,7 +110,6 @@ document.getElementById('login-form').addEventListener('submit', async function(
     const loginBtn = document.getElementById('login-btn');
     const loginText = document.getElementById('login-text');
     const loginLoading = document.getElementById('login-loading');
-    const errorMessage = document.getElementById('error-message');
     
     // 获取表单数据
     const username = usernameInput.value.trim();
@@ -114,7 +117,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
     
     // 验证输入
     if (!username || !password) {
-        showError('请输入用户名和密码');
+        showAlert('请输入用户名和密码', 'error');
         return;
     }
     
@@ -122,7 +125,6 @@ document.getElementById('login-form').addEventListener('submit', async function(
     loginBtn.disabled = true;
     loginText.classList.add('hidden');
     loginLoading.classList.remove('hidden');
-    errorMessage.classList.add('hidden');
     
     try {
         // 发送登录请求
@@ -138,16 +140,16 @@ document.getElementById('login-form').addEventListener('submit', async function(
             // 登录成功，跳转到仪表板
             showAlert('登录成功，正在跳转...', 'success');
             setTimeout(() => {
-                window.location.href = '/dashboard';
+                window.location.href = '{{ url_for("dashboard") }}';
             }, 1000);
         } else {
             // 登录失败，显示错误消息
-            showError(response.message || '登录失败');
+            showAlert(response.message || '登录失败', 'error');
         }
         
     } catch (error) {
         console.error('登录请求失败:', error);
-        showError('网络连接失败，请检查网络后重试');
+        showAlert('网络连接失败，请检查网络后重试', 'error');
     } finally {
         // 恢复按钮状态
         loginBtn.disabled = false;
@@ -156,23 +158,8 @@ document.getElementById('login-form').addEventListener('submit', async function(
     }
 });
 
-// 显示错误消息
-function showError(message) {
-    const errorMessage = document.getElementById('error-message');
-    errorMessage.textContent = message;
-    errorMessage.classList.remove('hidden');
-    
-    // 3秒后自动隐藏
-    setTimeout(() => {
-        errorMessage.classList.add('hidden');
-    }, 3000);
-}
-
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
-    // 初始化矩阵背景
-    initMatrix();
-    
     // 聚焦到用户名输入框
     document.getElementById('username').focus();
     
@@ -186,7 +173,7 @@ async function checkLoginStatus() {
         const response = await apiRequest('/api/verify-token');
         if (response.success) {
             // 已经登录，直接跳转到仪表板
-            window.location.href = '/dashboard';
+            window.location.href = '{{ url_for("dashboard") }}';
         }
     } catch (error) {
         // 未登录或验证失败，保持在登录页面
@@ -194,4 +181,4 @@ async function checkLoginStatus() {
     }
 }
 </script>
-{% endblock %} 
+{% endblock %}

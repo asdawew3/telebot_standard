@@ -30,13 +30,14 @@ _client_logger_instance = None
 class ClientLogger:
     """客户端日志类"""
     
-    def __init__(self, log_dir: str = 'logs', log_level: str = 'debug'):
+    def __init__(self, log_dir: str = 'logs', log_level: str = 'debug', clear_on_start: bool = False):
         """
         初始化日志系统
         
         Args:
             log_dir: 日志目录
             log_level: 日志级别
+            clear_on_start: 是否在启动时清空日志文件
         """
         # 创建日志目录
         self.log_dir = Path(log_dir)
@@ -104,8 +105,49 @@ class ClientLogger:
         operation_file_handler.setFormatter(operation_format)
         self.operation_logger.addHandler(operation_file_handler)
         
+        # 如果启动时需要清空日志文件，在设置完成后清空
+        if clear_on_start:
+            self._clear_log_files()
+        
         # 记录初始化信息
         self.info("客户端日志系统初始化完成", "ClientLogger.__init__")
+    
+    def _clear_log_files(self):
+        """清空客户端日志文件"""
+        try:
+            print("开始清空客户端日志文件...")
+            
+            # 先关闭所有现有的日志处理器
+            if hasattr(self, 'logger') and self.logger:
+                for handler in self.logger.handlers[:]:
+                    handler.close()
+                    self.logger.removeHandler(handler)
+            if hasattr(self, 'operation_logger') and self.operation_logger:
+                for handler in self.operation_logger.handlers[:]:
+                    handler.close()
+                    self.operation_logger.removeHandler(handler)
+            
+            # 定义要清空的日志文件列表
+            log_files = [
+                'client.log',
+                'client_operations.log'
+            ]
+            
+            # 遍历并清空每个日志文件
+            for log_file in log_files:
+                log_path = self.log_dir / log_file
+                try:
+                    # 直接创建空文件（覆盖原文件）
+                    with open(log_path, 'w', encoding='utf-8') as f:
+                        f.write('')  # 清空文件内容
+                    print(f"已清空客户端日志文件: {log_path}")
+                except Exception as e:
+                    print(f"清空客户端日志文件失败 {log_path}: {e}")
+            
+            print("客户端日志文件清空完成")
+                    
+        except Exception as e:
+            print(f"清空客户端日志文件过程中发生错误: {e}")
     
     def debug(self, message: str, module: str = None, exc_info: Exception = None) -> None:
         """
@@ -175,9 +217,12 @@ class ClientLogger:
         
         self.operation_logger.info(log_message)
 
-def get_client_logger() -> ClientLogger:
+def get_client_logger(clear_on_start: bool = False) -> ClientLogger:
     """
     获取客户端日志实例（单例模式）
+    
+    Args:
+        clear_on_start: 是否在启动时清空日志文件
     
     Returns:
         ClientLogger实例
@@ -185,7 +230,10 @@ def get_client_logger() -> ClientLogger:
     global _client_logger_instance
     
     if _client_logger_instance is None:
-        _client_logger_instance = ClientLogger()
+        _client_logger_instance = ClientLogger(clear_on_start=clear_on_start)
+    elif clear_on_start:
+        # 如果需要清空且实例已存在，直接清空文件
+        _client_logger_instance._clear_log_files()
     
     return _client_logger_instance
 

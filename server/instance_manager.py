@@ -25,6 +25,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import WebDriverException, TimeoutException
+from webdriver_manager.chrome import ChromeDriverManager
 
 from .config import get_config
 from .logger import get_server_logger, EnhancedLogger
@@ -139,6 +140,10 @@ class TelegramInstance:
         self.network_manager = get_network_manager()
         self.network_fixer = get_chrome_network_fixer()
         self.devtools_manager = get_chrome_devtools_manager()
+        
+        # 初始化浏览器相关属性
+        self.driver = None  # WebDriver实例
+        self.service = None  # Chrome服务实例
         
         logger.info(f"Telegram实例初始化完成: {instance_id}", "TelegramInstance.__init__")
 
@@ -721,15 +726,33 @@ class TelegramInstance:
                 system = platform.system().lower()
                 
                 try:
-                    # 第一优先级：系统ChromeDriver（特别是Ubuntu环境）
-                    system_chromedriver = self._find_system_chromedriver()
-                    if system_chromedriver:
-                        enhanced_logger.info(f"找到并使用系统ChromeDriver: {system_chromedriver} (系统: {system})", 
+                    # Windows环境优先使用webdriver-manager自动管理
+                    if system == 'windows':
+                        enhanced_logger.info(f"Windows环境使用webdriver-manager自动管理ChromeDriver", 
                                            "initialize_browser")
-                        service = Service(system_chromedriver)
+                        try:
+                            wdm_path = ChromeDriverManager().install()
+                            if self._validate_chromedriver_path(wdm_path):
+                                enhanced_logger.info(f"webdriver-manager成功获取ChromeDriver: {wdm_path}", 
+                                                   "initialize_browser")
+                                service = Service(wdm_path)
+                            else:
+                                enhanced_logger.warning(f"webdriver-manager返回无效文件: {wdm_path}", 
+                                                       "initialize_browser")
+                        except Exception as wdm_error:
+                            enhanced_logger.warning(f"webdriver-manager失败，尝试系统ChromeDriver: {wdm_error}", 
+                                                   "initialize_browser")
                     
-                    # 第二优先级：webdriver-manager（主要用于Windows）
-                    elif system == 'windows' or not system_chromedriver:
+                    # Linux环境优先查找系统ChromeDriver
+                    if not service:
+                        system_chromedriver = self._find_system_chromedriver()
+                        if system_chromedriver:
+                            enhanced_logger.info(f"找到并使用系统ChromeDriver: {system_chromedriver} (系统: {system})", 
+                                               "initialize_browser")
+                            service = Service(system_chromedriver)
+                    
+                    # 备用方案：尝试webdriver-manager（Linux环境）
+                    if not service and system != 'windows':
                         try:
                             enhanced_logger.info(f"尝试webdriver-manager自动管理ChromeDriver (系统: {system})", 
                                                 "initialize_browser")
@@ -1617,13 +1640,13 @@ class TelegramInstance:
         
         try:
             # 关闭WebDriver
-            if self.driver:
+            if hasattr(self, 'driver') and self.driver:
                 self.driver.quit()
                 self.driver = None
                 logger.debug(f"WebDriver已关闭: {self.instance_id}", "TelegramInstance._cleanup_driver")
                 
             # 停止Chrome服务
-            if self.service:
+            if hasattr(self, 'service') and self.service:
                 try:
                     self.service.stop()
                 except Exception:

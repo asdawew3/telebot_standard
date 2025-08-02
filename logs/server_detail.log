@@ -1,0 +1,109 @@
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:<module>:53][main] 服务器模块导入完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:<module>:54][main] 当前工作目录: C:\Users\Administrator\Desktop\github_clone\telebot_standard
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:<module>:55][main] 脚本所在目录: C:\Users\Administrator\Desktop\github_clone\telebot_standard
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:<module>:56][main] Python包导入路径设置完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:397][main] ============================================================
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:398][main] Telegram Bot服务器启动
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:399][main] ============================================================
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:404][main] 服务器配置加载完成: 端口=5000, 主机=0.0.0.0
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:407][main] 开始网络配置检查
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:get_network_manager:296][get_network_manager] 创建全局网络管理器实例
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:__init__:26][NetworkManager.__init__] 初始化网络管理器
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:__init__:33][NetworkManager.__init__] 检测到操作系统: windows
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:__init__:34][NetworkManager.__init__] 网络管理器初始化完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:main:411][main] 检查端口 5000 的可访问性
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.87.80
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:414][main] 端口状态检查结果 - 监听: True, 可绑定: True, 本地IP: 192.168.87.80
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:420][main] 网络配置建议:
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:422][main]   - 端口已在使用中，可能有其他服务正在运行
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:422][main]   - 如需外部访问，请在Windows防火墙中允许该端口
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:422][main]   - 确保服务器监听地址设置为 0.0.0.0 以允许外部连接
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:425][main] 开始清理端口 5000 上的僵尸连接
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:check_port_status:82][check_port_status] 检查端口 5000 状态
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:check_port_status:91][check_port_status] 端口 5000 可用
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:444][main] 端口 5000 初始状态正常，无需清理
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:447][main] 开始验证运行环境
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:validate_environment:300][validate_environment] 开始验证运行环境
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:309][validate_environment] Python版本检查通过: sys.version_info(major=3, minor=13, micro=3, releaselevel='final', serial=0)
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:319][validate_environment] 目录已存在: logs
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:319][validate_environment] 目录已存在: js_modules
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:319][validate_environment] 目录已存在: profiles
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:validate_environment:325][validate_environment] 找到 js_modules 文件夹，包含 3 个JavaScript文件
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:327][validate_environment] JavaScript文件: console_control_system.js
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:327][validate_environment] JavaScript文件: console_test.js
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:327][validate_environment] JavaScript文件: message_queue_system.js
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:338][validate_environment] 配置文件指定的JavaScript文件检查通过: js_modules\console_test.js
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:validate_environment:340][validate_environment] 运行环境验证完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:451][main] 运行环境验证通过
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:454][main] 设置信号处理器
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:setup_signal_handlers:273][setup_signal_handlers] 设置信号处理器
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:setup_signal_handlers:296][setup_signal_handlers] 信号处理器设置完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:456][main] 信号处理器设置完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:459][main] 显示启动横幅
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:print_startup_banner:349][print_startup_banner] 显示启动横幅
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.87.80
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:print_startup_banner:389][print_startup_banner] 服务器启动横幅显示完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:463][main] 准备启动Flask服务器
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:464][main] 服务器将在 http://0.0.0.0:5000 上启动
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:run_server:869][run_server] 启动Telegram Bot服务器
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:create_app:41][create_app] 开始创建Flask应用
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:48][create_app] Flask应用实例创建完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:62][create_app] Flask基础配置完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:65][create_app] 初始化Flask扩展
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:69][create_app] CORS支持已启用
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:73][create_app] 会话管理已初始化
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [auth.py:get_auth_manager:572][get_auth_manager] 获取认证管理器实例
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [auth.py:init_app:486][AuthManager.init_app] 初始化Flask应用认证
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [auth.py:init_app:501][AuthManager.init_app] Flask应用认证初始化完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:78][create_app] 认证管理器已初始化
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:82][create_app] 请求钩子已注册
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:85][create_app] 开始注册应用路由
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:register_api_routes:100][register_api_routes] 开始注册API路由
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [auth.py:get_auth_manager:572][get_auth_manager] 获取认证管理器实例
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:register_api_routes:853][register_api_routes] API路由注册完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [web_routes.py:register_web_routes:33][register_web_routes] 开始注册Web界面路由
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [web_routes.py:register_web_routes:406][register_web_routes] Web界面路由注册完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:88][create_app] 应用路由注册完成
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:create_app:90][create_app] Flask应用创建完成
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
+2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:run_server:879][run_server] 服务器启动在 http://0.0.0.0:5000

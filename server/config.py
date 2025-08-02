@@ -9,6 +9,7 @@
 
 import os
 import json
+import time
 from typing import Dict, Any, Optional
 from dataclasses import dataclass, asdict
 
@@ -24,6 +25,7 @@ class ServerConfig:
     host: str = '0.0.0.0'                # 服务器监听地址（0.0.0.0允许外部访问）
     port: int = 5000                    # 服务器监听端口
     debug: bool = True                   # 是否开启调试模式
+    start_time: float = 0.0             # 服务器启动时间
     
     # 实例管理配置
     max_instances: int = 10              # 最大实例数量
@@ -76,6 +78,9 @@ class ConfigManager:
         
         # 创建默认配置
         self.config = ServerConfig()
+        
+        # 设置服务器启动时间
+        self.config.start_time = time.time()
         
         # 加载配置文件
         self.load_config()

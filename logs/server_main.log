@@ -1,0 +1,45 @@
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:<module>:53][main] 服务器模块导入完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:397][main] ============================================================
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:398][main] Telegram Bot服务器启动
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:399][main] ============================================================
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:404][main] 服务器配置加载完成: 端口=5000, 主机=0.0.0.0
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:407][main] 开始网络配置检查
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:get_network_manager:296][get_network_manager] 创建全局网络管理器实例
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:__init__:26][NetworkManager.__init__] 初始化网络管理器
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:__init__:34][NetworkManager.__init__] 网络管理器初始化完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:414][main] 端口状态检查结果 - 监听: True, 可绑定: True, 本地IP: 192.168.87.80
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:420][main] 网络配置建议:
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:422][main]   - 端口已在使用中，可能有其他服务正在运行
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:422][main]   - 如需外部访问，请在Windows防火墙中允许该端口
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:422][main]   - 确保服务器监听地址设置为 0.0.0.0 以允许外部连接
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:425][main] 开始清理端口 5000 上的僵尸连接
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:check_port_status:91][check_port_status] 端口 5000 可用
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:444][main] 端口 5000 初始状态正常，无需清理
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:447][main] 开始验证运行环境
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:validate_environment:300][validate_environment] 开始验证运行环境
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:validate_environment:325][validate_environment] 找到 js_modules 文件夹，包含 3 个JavaScript文件
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:validate_environment:340][validate_environment] 运行环境验证完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:451][main] 运行环境验证通过
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:454][main] 设置信号处理器
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:setup_signal_handlers:273][setup_signal_handlers] 设置信号处理器
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:setup_signal_handlers:296][setup_signal_handlers] 信号处理器设置完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:456][main] 信号处理器设置完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:459][main] 显示启动横幅
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:print_startup_banner:349][print_startup_banner] 显示启动横幅
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:print_startup_banner:389][print_startup_banner] 服务器启动横幅显示完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:463][main] 准备启动Flask服务器
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [server.py:main:464][main] 服务器将在 http://0.0.0.0:5000 上启动
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [app.py:run_server:869][run_server] 启动Telegram Bot服务器
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [app.py:create_app:41][create_app] 开始创建Flask应用
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [auth.py:init_app:486][AuthManager.init_app] 初始化Flask应用认证
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [auth.py:init_app:501][AuthManager.init_app] Flask应用认证初始化完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [app.py:register_api_routes:100][register_api_routes] 开始注册API路由
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [app.py:register_api_routes:853][register_api_routes] API路由注册完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [web_routes.py:register_web_routes:33][register_web_routes] 开始注册Web界面路由
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [web_routes.py:register_web_routes:406][register_web_routes] Web界面路由注册完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [app.py:create_app:90][create_app] Flask应用创建完成
+2025-07-19 14:59:59 [INFO] [info:248] [PID:30216] [TID:48596] [app.py:run_server:879][run_server] 服务器启动在 http://0.0.0.0:5000

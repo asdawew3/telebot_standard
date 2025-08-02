@@ -17,7 +17,7 @@
         /* 基础样式 */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background-color: #121212;
             color: #e0e0e0;
             min-height: 100vh;
             line-height: 1.6;
@@ -32,30 +32,27 @@
         
         /* 页面头部 */
         .header {
-            background: rgba(0, 0, 0, 0.8);
-            border-bottom: 2px solid #00ff00;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
             padding: 15px 0;
             margin-bottom: 30px;
-            backdrop-filter: blur(10px);
         }
         
         .header h1 {
-            color: #00ff00;
+            color: #ffffff;
             font-size: 28px;
-            font-weight: 300;
+            font-weight: 500;
             text-align: center;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
         
         /* 卡片样式 */
         .card {
-            background: rgba(30, 30, 30, 0.9);
+            background-color: #1e1e1e;
             border: 1px solid #333;
             border-radius: 8px;
             padding: 30px;
             margin-bottom: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
         }
         
         /* 表单样式 */
@@ -66,72 +63,67 @@
         .form-label {
             display: block;
             margin-bottom: 8px;
-            color: #b0b0b0;
+            color: #cccccc;
             font-weight: 500;
         }
         
         .form-input {
             width: 100%;
             padding: 12px 15px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #333;
-            border-radius: 5px;
-            color: #e0e0e0;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
         }
         
         .form-input:focus {
             outline: none;
-            border-color: #00ff00;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            border-color: #4a6ed3;
         }
         
         /* 按钮样式 */
         .btn {
-            padding: 12px 25px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: background-color 0.2s;
             text-decoration: none;
             display: inline-block;
             text-align: center;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
-            color: #000;
+            background-color: #4a6ed3;
+            color: white;
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #00cc00 0%, #009900 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+            background-color: #3a5ec3;
         }
         
         .btn-secondary {
-            background: linear-gradient(135deg, #555 0%, #333 100%);
+            background-color: #2a2a2a;
             color: #e0e0e0;
-            border: 1px solid #666;
+            border: 1px solid #333;
         }
         
         .btn-secondary:hover {
-            background: linear-gradient(135deg, #666 0%, #444 100%);
-            transform: translateY(-2px);
+            background-color: #333333;
         }
         
         .btn-danger {
-            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            background-color: #dc3545;
             color: #fff;
         }
         
         .btn-danger:hover {
-            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+            background-color: #c82333;
         }
         
         /* 表格样式 */
@@ -149,15 +141,15 @@
         }
         
         .table th {
-            background: rgba(0, 0, 0, 0.8);
-            color: #00ff00;
+            background-color: #1a1a1a;
+            color: #ffffff;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .table tbody tr:hover {
-            background: rgba(0, 255, 0, 0.1);
+            background-color: #2a2a2a;
         }
         
         /* 状态指示器 */
@@ -170,21 +162,21 @@
         }
         
         .status-online {
-            background: rgba(0, 255, 0, 0.2);
-            color: #00ff00;
-            border: 1px solid #00ff00;
+            background-color: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 1px solid #4caf50;
         }
         
         .status-offline {
-            background: rgba(255, 68, 68, 0.2);
-            color: #ff4444;
-            border: 1px solid #ff4444;
+            background-color: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid #f44336;
         }
         
         .status-loading {
-            background: rgba(255, 193, 7, 0.2);
-            color: #ffc107;
-            border: 1px solid #ffc107;
+            background-color: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            border: 1px solid #ff9800;
         }
         
         /* 消息提示 */
@@ -196,26 +188,26 @@
         }
         
         .alert-success {
-            background: rgba(0, 255, 0, 0.1);
-            color: #00ff00;
-            border-left-color: #00ff00;
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border-left-color: #4caf50;
         }
         
         .alert-error {
-            background: rgba(255, 68, 68, 0.1);
-            color: #ff4444;
-            border-left-color: #ff4444;
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+            border-left-color: #f44336;
         }
         
         .alert-warning {
-            background: rgba(255, 193, 7, 0.1);
-            color: #ffc107;
-            border-left-color: #ffc107;
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #ff9800;
+            border-left-color: #ff9800;
         }
         
         /* 导航栏 */
         .navbar {
-            background: rgba(0, 0, 0, 0.9);
+            background-color: #1a1a1a;
             padding: 10px 0;
             border-bottom: 1px solid #333;
         }
@@ -241,8 +233,8 @@
         
         .navbar a:hover,
         .navbar a.active {
-            color: #00ff00;
-            background: rgba(0, 255, 0, 0.1);
+            color: #4a6ed3;
+            background-color: rgba(74, 110, 211, 0.1);
         }
         
         /* 响应式设计 */
@@ -276,7 +268,7 @@
             height: 20px;
             border: 3px solid #333;
             border-radius: 50%;
-            border-top-color: #00ff00;
+            border-top-color: #4a6ed3;
             animation: spin 1s ease-in-out infinite;
         }
         
@@ -295,15 +287,15 @@
         }
         
         .text-success {
-            color: #00ff00;
+            color: #4caf50;
         }
         
         .text-error {
-            color: #ff4444;
+            color: #f44336;
         }
         
         .text-warning {
-            color: #ffc107;
+            color: #ff9800;
         }
         
         .text-muted {

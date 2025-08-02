@@ -27,8 +27,8 @@ from .client_logger import get_client_logger, log_debug, log_info, log_error, lo
 from .client_api import ClientAPI
 from .console_manager import ConsoleManager
 
-# 获取日志实例
-logger = get_client_logger()
+# 获取日志实例（启动时清空日志文件）
+logger = get_client_logger(clear_on_start=True)
 
 # 全局变量
 client_api = None

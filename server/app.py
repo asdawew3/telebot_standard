@@ -13,7 +13,7 @@ import time
 import signal
 import atexit
 import platform
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 from flask_session import Session
 
@@ -242,7 +242,7 @@ def register_api_routes(app: Flask):
             logger.info(f"获取分组列表成功，数量: {len(groups)}", "list_groups")
             return jsonify({
                 'success': True,
-                'groups': groups,
+                'data': groups,
                 'total': len(groups)
             }), 200
             
@@ -353,7 +353,7 @@ def register_api_routes(app: Flask):
             logger.info(f"获取用户资料列表成功，数量: {len(profiles)}", "list_profiles")
             return jsonify({
                 'success': True,
-                'profiles': profiles,
+                'data': profiles,
                 'total': len(profiles)
             }), 200
             
@@ -475,7 +475,7 @@ def register_api_routes(app: Flask):
             logger.info(f"获取实例列表成功，数量: {len(instances)}", "list_instances")
             return jsonify({
                 'success': True,
-                'instances': instances,
+                'data': instances,
                 'total': len(instances)
             }), 200
             
@@ -694,7 +694,7 @@ def register_api_routes(app: Flask):
             logger.info(f"获取JavaScript模块列表成功，数量: {len(modules)}", "list_js_modules")
             return jsonify({
                 'success': True,
-                'modules': modules,
+                'data': modules,
                 'total': len(modules)
             }), 200
             
@@ -839,7 +839,7 @@ def register_api_routes(app: Flask):
             logger.info("服务器状态信息获取成功", "server_status")
             return jsonify({
                 'success': True,
-                'status': status
+                'data': status
             }), 200
             
         except Exception as e:

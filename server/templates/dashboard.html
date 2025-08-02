@@ -1,196 +1,367 @@
 {% extends "base.html" %}
+
 {% set show_navbar = true %}
 
-{% block title %}管理控制台 - Telegram Bot管理系统{% endblock %}
+{% block title %}{{ page_title or '管理控制台' }} - Telegram Bot管理系统{% endblock %}
 
-{% block page_title %}管理控制台{% endblock %}
+{% block page_title %}{{ page_title or '管理控制台' }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* 状态卡片样式 */
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    font-size: 32px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon.online {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+}
+
+.stat-icon.offline {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+}
+
+.stat-icon.info {
+    background-color: rgba(74, 110, 211, 0.2);
+    color: #4a6ed3;
+}
+
+.stat-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.stat-info p {
+    margin: 0;
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+/* 操作区域 */
+.action-section {
+    margin-bottom: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* 表格增强样式 */
+.table-container {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.table-header {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-header h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #333;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #ffffff;
+}
+
+.close {
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.close:hover {
+    color: #ffffff;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* 表单样式增强 */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group small {
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .table-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
 
 {% block content %}
-<!-- 系统概览 -->
-<div class="card">
-    <h3 style="color: #00ff00; margin-bottom: 20px;">系统概览</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-        <div class="status-card">
-            <h4>服务器状态</h4>
-            <span id="server-status" class="status status-loading">检查中</span>
+<!-- 仪表板头部 -->
+<div class="dashboard-header">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <h2 style="margin: 0; color: #ffffff;">欢迎回来，{{ current_user.username if current_user else '管理员' }}</h2>
+            <p style="margin: 5px 0 0 0; color: #aaaaaa;">系统运行状态良好，当前时间: <span id="current-time"></span></p>
         </div>
-        <div class="status-card">
-            <h4>活跃实例</h4>
-            <span id="active-instances" class="text-success">--</span>
-        </div>
-        <div class="status-card">
-            <h4>总实例数</h4>
-            <span id="total-instances" class="text-muted">--</span>
-        </div>
-        <div class="status-card">
-            <h4>系统负载</h4>
-            <span id="system-load" class="text-warning">--</span>
+        <div>
+            <button class="btn btn-primary" onclick="refreshDashboard()">
+                <span id="refresh-icon">🔄</span> 刷新数据
+            </button>
         </div>
     </div>
 </div>
 
-<!-- 快速操作 -->
-<div class="quick-actions">
-    <h3>快速操作</h3>
+<!-- 状态统计卡片 -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon online">📊</div>
+        <div class="stat-info">
+            <h3 id="total-instances">0</h3>
+            <p>总实例数</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon online">✅</div>
+        <div class="stat-info">
+            <h3 id="active-instances">0</h3>
+            <p>活跃实例</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon offline">❌</div>
+        <div class="stat-info">
+            <h3 id="error-instances">0</h3>
+            <p>错误实例</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon info">💾</div>
+        <div class="stat-info">
+            <h3 id="system-memory">0%</h3>
+            <p>内存使用率</p>
+        </div>
+    </div>
+</div>
+
+<!-- 快速操作区域 -->
+<div class="action-section">
+    <h3 style="margin-bottom: 15px;">快速操作</h3>
     <div class="action-buttons">
-        <button onclick="showCreateInstanceModal()" class="btn btn-primary">
-            <i class="icon">+</i> 创建实例
+        <button class="btn btn-primary" onclick="showCreateInstanceModal()">
+            📱 创建实例
         </button>
-        <button onclick="showCreateGroupModal()" class="btn btn-secondary">
-            <i class="icon">📁</i> 创建分组
+        <button class="btn btn-secondary" onclick="showCreateProfileModal()">
+            👤 创建用户资料
         </button>
-        <button onclick="showCreateProfileModal()" class="btn btn-secondary">
-            <i class="icon">👤</i> 创建用户资料
+        <button class="btn btn-secondary" onclick="window.location.href='{{ url_for('instances_page') }}'">
+            🔧 实例管理
         </button>
-        <button onclick="refreshData()" class="btn btn-info">
-            <i class="icon">🔄</i> 刷新数据
-        </button>
-        <button onclick="exportLogs()" class="btn btn-warning">
-            <i class="icon">📋</i> 导出日志
-        </button>
-        <button onclick="emergencyStop()" class="btn btn-danger">
-            <i class="icon">⚠</i> 紧急停止
+        <button class="btn btn-secondary" onclick="window.location.href='{{ url_for('system_status') }}'">
+            📈 系统状态
         </button>
     </div>
 </div>
 
 <!-- 实例列表 -->
-<div class="card">
-    <h3 style="color: #00ff00; margin-bottom: 20px;">实例管理</h3>
-    
-    <!-- 实例过滤器 -->
-    <div style="margin-bottom: 20px; display: flex; gap: 15px; align-items: center;">
-        <select id="instance-filter" class="form-input" style="width: auto;">
-            <option value="">所有实例</option>
-            <option value="ready">就绪</option>
-            <option value="initializing">初始化中</option>
-            <option value="error">错误</option>
-        </select>
-        <input type="text" id="instance-search" class="form-input" placeholder="搜索实例..." style="width: 300px;">
-        <button class="btn btn-secondary" onclick="loadInstances()">刷新列表</button>
+<div class="table-container">
+    <div class="table-header">
+        <h3>实例列表</h3>
+        <div class="table-actions">
+            <button class="btn btn-secondary btn-sm" onclick="loadInstances()">刷新</button>
+            <button class="btn btn-primary btn-sm" onclick="showCreateInstanceModal()">新建实例</button>
+        </div>
     </div>
-    
-    <!-- 实例表格 -->
-    <div style="overflow-x: auto;">
-        <table class="table" id="instances-table">
-            <thead>
-                <tr>
-                    <th>实例ID</th>
-                    <th>名称</th>
-                    <th>状态</th>
-                    <th>分组</th>
-                    <th>用户资料</th>
-                    <th>创建时间</th>
-                    <th>最后活动</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody id="instances-tbody">
-                <tr>
-                    <td colspan="8" class="text-center">
-                        <div class="loading"></div> 加载中...
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- 分组管理 -->
-<div class="card">
-    <h3 style="color: #00ff00; margin-bottom: 20px;">分组管理</h3>
-    
-    <!-- 分组表格 -->
-    <div style="overflow-x: auto;">
-        <table class="table" id="groups-table">
-            <thead>
-                <tr>
-                    <th>分组ID</th>
-                    <th>名称</th>
-                    <th>描述</th>
-                    <th>最大实例数</th>
-                    <th>父分组</th>
-                    <th>标签</th>
-                    <th>创建时间</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody id="groups-tbody">
-                <tr>
-                    <td colspan="8" class="text-center">
-                        <div class="loading"></div> 加载中...
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>实例名称</th>
+                <th>状态</th>
+                <th>分组</th>
+                <th>用户资料</th>
+                <th>创建时间</th>
+                <th>最后访问</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="instances-table-body">
+            <tr>
+                <td colspan="7" class="text-center text-muted">正在加载实例数据...</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- 用户资料管理 -->
-<div class="card">
-    <h3 style="color: #00ff00; margin-bottom: 20px;">用户资料管理</h3>
-    
+<div class="table-container" style="margin-top: 30px;">
+    <div class="table-header">
+        <h3>用户资料管理</h3>
+        <div class="table-actions">
+            <button class="btn btn-secondary btn-sm" onclick="loadProfiles()">刷新</button>
+            <button class="btn btn-primary btn-sm" onclick="showCreateProfileModal()">新建资料</button>
+        </div>
+    </div>
     <!-- 用户资料表格 -->
-    <div style="overflow-x: auto;">
-        <table class="table" id="profiles-table">
-            <thead>
-                <tr>
-                    <th>资料ID</th>
-                    <th>名称</th>
-                    <th>描述</th>
-                    <th>大小</th>
-                    <th>默认资料</th>
-                    <th>标签</th>
-                    <th>创建时间</th>
-                    <th>最后使用</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody id="profiles-tbody">
-                <tr>
-                    <td colspan="9" class="text-center">
-                        <div class="loading"></div> 加载中...
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- 最近活动日志 -->
-<div class="card">
-    <h3 style="color: #00ff00; margin-bottom: 20px;">最近活动</h3>
-    <div id="activity-log" style="max-height: 300px; overflow-y: auto; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 5px; font-family: monospace; font-size: 14px;">
-        <div class="text-muted">正在加载活动日志...</div>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>资料名称</th>
+                <th>描述</th>
+                <th>大小</th>
+                <th>创建时间</th>
+                <th>状态</th>
+                <th>标签</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="profiles-table-body">
+            <tr>
+                <td colspan="7" class="text-center text-muted">正在加载用户资料数据...</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- 创建实例模态框 -->
-<div id="createInstanceModal" class="modal">
+<div id="create-instance-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <h3>创建新实例</h3>
-            <span class="close" onclick="hideCreateInstanceModal()">&times;</span>
+            <button class="close" onclick="hideCreateInstanceModal()">&times;</button>
         </div>
         <div class="modal-body">
-            <form id="createInstanceForm">
+            <form id="create-instance-form">
                 <div class="form-group">
-                    <label for="instance-name">实例名称（可选）</label>
-                    <input type="text" id="instance-name" name="name" placeholder="留空将自动生成">
+                    <label for="instance-name" class="form-label">实例名称 *</label>
+                    <input type="text" id="instance-name" name="name" class="form-input" required placeholder="输入实例名称">
+                    <small>为实例指定一个唯一的名称</small>
                 </div>
-                <div class="form-group">
-                    <label for="instance-group">分组 *</label>
-                    <select id="instance-group" name="group_id" required>
-                        <option value="">请选择分组</option>
-                    </select>
-                    <small>选择实例所属的分组</small>
-                </div>
-                <div class="form-group">
-                    <label for="instance-profile">用户资料 *</label>
-                    <select id="instance-profile" name="profile_id" required>
-                        <option value="">请选择用户资料</option>
-                    </select>
-                    <small>选择实例使用的浏览器用户资料</small>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="instance-group" class="form-label">分组</label>
+                        <select id="instance-group" name="group_id" class="form-input">
+                            <option value="default">默认分组</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instance-profile" class="form-label">用户资料 *</label>
+                        <select id="instance-profile" name="profile_id" class="form-input" required>
+                            <option value="">请选择用户资料</option>
+                        </select>
+                        <small>选择实例使用的浏览器用户资料</small>
+                    </div>
                 </div>
             </form>
         </div>
@@ -201,89 +372,24 @@
     </div>
 </div>
 
-<!-- 创建分组模态框 -->
-<div id="createGroupModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3>创建新分组</h3>
-            <span class="close" onclick="hideCreateGroupModal()">&times;</span>
-        </div>
-        <div class="modal-body">
-            <form id="createGroupForm">
-                <div class="form-group">
-                    <label for="group-id">分组ID *</label>
-                    <input type="text" id="group-id" name="group_id" required placeholder="例如: my-group">
-                    <small>分组的唯一标识符，只能包含字母、数字、下划线和短横线</small>
-                </div>
-                <div class="form-group">
-                    <label for="group-name">分组名称 *</label>
-                    <input type="text" id="group-name" name="name" required placeholder="例如: 我的分组">
-                    <small>分组的显示名称</small>
-                </div>
-                <div class="form-group">
-                    <label for="group-description">分组描述</label>
-                    <textarea id="group-description" name="description" placeholder="描述这个分组的用途"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="group-max-instances">最大实例数</label>
-                    <input type="number" id="group-max-instances" name="max_instances" value="10" min="1" max="100">
-                    <small>该分组允许的最大实例数量</small>
-                </div>
-                <div class="form-group">
-                    <label for="group-parent">父分组（可选）</label>
-                    <select id="group-parent" name="parent_group">
-                        <option value="">无父分组</option>
-                    </select>
-                    <small>选择父分组以创建层级结构</small>
-                </div>
-                <div class="form-group">
-                    <label for="group-tags">标签</label>
-                    <input type="text" id="group-tags" name="tags" placeholder="标签1,标签2,标签3">
-                    <small>用逗号分隔多个标签</small>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="hideCreateGroupModal()">取消</button>
-            <button type="button" class="btn btn-primary" onclick="createGroup()">创建分组</button>
-        </div>
-    </div>
-</div>
-
 <!-- 创建用户资料模态框 -->
-<div id="createProfileModal" class="modal">
+<div id="create-profile-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <h3>创建新用户资料</h3>
-            <span class="close" onclick="hideCreateProfileModal()">&times;</span>
+            <button class="close" onclick="hideCreateProfileModal()">&times;</button>
         </div>
         <div class="modal-body">
-            <form id="createProfileForm">
+            <form id="create-profile-form">
                 <div class="form-group">
-                    <label for="profile-id">资料ID（可选）</label>
-                    <input type="text" id="profile-id" name="profile_id" placeholder="留空将自动生成">
-                    <small>资料的唯一标识符，留空将自动生成UUID</small>
+                    <label for="profile-name" class="form-label">资料名称 *</label>
+                    <input type="text" id="profile-name" name="name" class="form-input" required placeholder="输入资料名称">
+                    <small>为用户资料指定一个描述性名称</small>
                 </div>
+                
                 <div class="form-group">
-                    <label for="profile-name">资料名称（可选）</label>
-                    <input type="text" id="profile-name" name="name" placeholder="留空将自动生成">
-                    <small>资料的显示名称，留空将自动生成</small>
-                </div>
-                <div class="form-group">
-                    <label for="profile-description">资料描述</label>
-                    <textarea id="profile-description" name="description" placeholder="描述这个用户资料的用途"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="profile-clone-from">克隆源（可选）</label>
-                    <select id="profile-clone-from" name="clone_from">
-                        <option value="">创建空白资料</option>
-                    </select>
-                    <small>选择现有资料作为模板进行克隆</small>
-                </div>
-                <div class="form-group">
-                    <label for="profile-tags">标签</label>
-                    <input type="text" id="profile-tags" name="tags" placeholder="标签1,标签2,标签3">
-                    <small>用逗号分隔多个标签</small>
+                    <label for="profile-description" class="form-label">描述</label>
+                    <textarea id="profile-description" name="description" class="form-input" rows="3" placeholder="描述这个用户资料的用途"></textarea>
                 </div>
             </form>
         </div>
@@ -293,201 +399,61 @@
         </div>
     </div>
 </div>
-
-<!-- 模态框遮罩 -->
-<div id="modal-overlay" class="modal-overlay hidden" onclick="hideAllModals()"></div>
-
-<style>
-/* 状态卡片样式 */
-.status-card {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    text-align: center;
-}
-
-.status-card h4 {
-    color: #b0b0b0;
-    font-size: 14px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-/* 模态框样式 */
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    background: rgba(30, 30, 30, 0.95);
-    border: 2px solid #00ff00;
-    border-radius: 8px;
-    padding: 30px;
-    min-width: 400px;
-    backdrop-filter: blur(10px);
-}
-
-.modal h3 {
-    color: #00ff00;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-}
-
-/* 操作按钮样式 */
-.action-btn {
-    padding: 5px 10px;
-    margin: 0 2px;
-    font-size: 12px;
-    border-radius: 3px;
-}
-
-/* 活动日志样式 */
-.log-entry {
-    margin: 5px 0;
-    padding: 5px;
-    border-left: 2px solid #333;
-    padding-left: 10px;
-}
-
-.log-entry.success {
-    border-left-color: #00ff00;
-    color: #00ff00;
-}
-
-.log-entry.error {
-    border-left-color: #ff4444;
-    color: #ff4444;
-}
-
-.log-entry.warning {
-    border-left-color: #ffc107;
-    color: #ffc107;
-}
-
-/* 徽章样式 */
-.badge {
-    display: inline-block;
-    padding: 4px 8px;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    background: rgba(0, 255, 0, 0.1);
-    color: #00ff00;
-    border: 1px solid #00ff00;
-    border-radius: 12px;
-    text-align: center;
-    white-space: nowrap;
-}
-
-/* 快速操作区域样式 */
-.quick-actions {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    margin-bottom: 25px;
-}
-
-.quick-actions h3 {
-    color: #00ff00;
-    margin-bottom: 15px;
-    font-size: 18px;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.action-buttons .btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.action-buttons .icon {
-    font-size: 14px;
-}
-</style>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-// 全局变量
-let instancesData = [];
-let activityLogInterval;
-
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
-    initDashboard();
+    // 更新当前时间
+    updateCurrentTime();
+    setInterval(updateCurrentTime, 1000);
+    
+    // 加载初始数据
+    refreshDashboard();
+    
+    // 定时刷新数据（每30秒）
+    setInterval(refreshDashboard, 30000);
 });
 
-// 初始化仪表板
-async function initDashboard() {
-    console.log('初始化仪表板');
-    
-    // 加载系统状态
-    await loadSystemStatus();
-    
-    // 加载实例列表
-    await loadInstances();
-    
-    // 加载分组列表
-    await loadGroups();
-    
-    // 加载用户资料列表
-    await loadProfiles();
-    
-    // 启动实时数据更新
-    startRealTimeUpdates();
-    
-    // 绑定事件监听器
-    bindEventListeners();
+// 更新当前时间
+function updateCurrentTime() {
+    const now = new Date();
+    document.getElementById('current-time').textContent = now.toLocaleString('zh-CN');
 }
 
-// 绑定事件监听器
-function bindEventListeners() {
-    // 实例过滤器
-    document.getElementById('instance-filter').addEventListener('change', filterInstances);
-    document.getElementById('instance-search').addEventListener('input', filterInstances);
+// 刷新仪表板数据
+async function refreshDashboard() {
+    const refreshIcon = document.getElementById('refresh-icon');
+    refreshIcon.style.animation = 'spin 1s linear infinite';
     
-    // 移除了创建实例表单的submit绑定，现在直接使用按钮onclick事件
-    console.log('事件监听器绑定完成');
+    try {
+        await Promise.all([
+            loadSystemStats(),
+            loadInstances(),
+            loadProfiles()
+        ]);
+    } catch (error) {
+        console.error('刷新仪表板数据失败:', error);
+        showAlert('刷新数据失败', 'error');
+    } finally {
+        refreshIcon.style.animation = '';
+    }
 }
 
-// 加载系统状态
-async function loadSystemStatus() {
+// 加载系统统计信息
+async function loadSystemStats() {
     try {
         const response = await apiRequest('/api/status');
-        
         if (response.success) {
-            const serverInfo = response.server || {};
-            const instancesInfo = response.instances || {};
-            
-            // 更新状态显示
-            document.getElementById('server-status').textContent = serverInfo.status || '未知';
-            document.getElementById('server-status').className = `status ${serverInfo.status === 'running' ? 'status-online' : 'status-offline'}`;
-            
-            document.getElementById('active-instances').textContent = instancesInfo.ready || 0;
-            document.getElementById('total-instances').textContent = instancesInfo.total || 0;
-            document.getElementById('system-load').textContent = `${serverInfo.load || 0}%`;
+            const stats = response.data;
+            document.getElementById('total-instances').textContent = stats.instances?.total || 0;
+            document.getElementById('active-instances').textContent = stats.instances?.active || 0;
+            document.getElementById('error-instances').textContent = stats.instances?.error || 0;
+            document.getElementById('system-memory').textContent = (stats.system?.memory_percent || 0).toFixed(1) + '%';
         }
     } catch (error) {
-        console.error('加载系统状态失败:', error);
-        showAlert('加载系统状态失败', 'error');
+        console.error('加载系统统计失败:', error);
     }
 }
 
@@ -495,10 +461,8 @@ async function loadSystemStatus() {
 async function loadInstances() {
     try {
         const response = await apiRequest('/api/instances');
-        
         if (response.success) {
-            instancesData = response.instances || [];
-            renderInstancesTable(instancesData);
+            renderInstancesTable(response.data);
         } else {
             showAlert('加载实例列表失败: ' + response.message, 'error');
         }
@@ -508,366 +472,119 @@ async function loadInstances() {
     }
 }
 
-// 加载分组列表
-async function loadGroups() {
-    try {
-        const response = await apiRequest('/api/groups');
-        
-        if (response.success) {
-            const groups = response.groups || [];
-            renderGroupsTable(groups);
-        } else {
-            showAlert('加载分组列表失败: ' + response.message, 'error');
-        }
-    } catch (error) {
-        console.error('加载分组列表失败:', error);
-        showAlert('加载分组列表失败', 'error');
-    }
-}
-
-// 加载用户资料列表
-async function loadProfiles() {
-    try {
-        const response = await apiRequest('/api/profiles');
-        
-        if (response.success) {
-            const profiles = response.profiles || [];
-            renderProfilesTable(profiles);
-        } else {
-            showAlert('加载用户资料列表失败: ' + response.message, 'error');
-        }
-    } catch (error) {
-        console.error('加载用户资料列表失败:', error);
-        showAlert('加载用户资料列表失败', 'error');
-    }
-}
-
 // 渲染实例表格
 function renderInstancesTable(instances) {
-    const tbody = document.getElementById('instances-tbody');
+    const tbody = document.getElementById('instances-table-body');
     
-    if (instances.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted">暂无实例</td></tr>';
+    if (!instances || instances.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">暂无实例</td></tr>';
         return;
     }
     
     tbody.innerHTML = instances.map(instance => `
         <tr>
-            <td><code>${instance.id ? instance.id.substring(0, 8) + '...' : '未知'}</code></td>
-            <td>${instance.name || '未命名'}</td>
-            <td><span class="status ${getStatusClass(instance.status)}">${instance.status || '未知'}</span></td>
-            <td><span class="badge">${instance.group_id || 'default'}</span></td>
-            <td><span class="badge">${instance.profile_id || 'default'}</span></td>
-            <td>${formatTime(instance.created_at || Date.now() / 1000)}</td>
-            <td>${formatTime(instance.last_activity || Date.now() / 1000)}</td>
+            <td>${instance.name}</td>
             <td>
-                <button class="btn btn-secondary action-btn" onclick="injectScript('${instance.id}')">注入</button>
-                <button class="btn btn-secondary action-btn" onclick="executeCommand('${instance.id}')">执行</button>
-                <button class="btn btn-danger action-btn" onclick="destroyInstance('${instance.id}')">销毁</button>
+                <span class="status status-${instance.status === 'ready' ? 'online' : 
+                    instance.status === 'error' ? 'offline' : 'loading'}">
+                    ${getStatusText(instance.status)}
+                </span>
+            </td>
+            <td>${instance.group_id || 'default'}</td>
+            <td>${instance.profile_id || 'default'}</td>
+            <td>${formatTime(instance.created_at)}</td>
+            <td>${formatTime(instance.last_accessed)}</td>
+            <td>
+                <button class="btn btn-secondary btn-sm" onclick="viewInstance('${instance.id}')">查看</button>
+                <button class="btn btn-danger btn-sm" onclick="destroyInstance('${instance.id}')">销毁</button>
             </td>
         </tr>
     `).join('');
 }
 
-// 渲染分组表格
-function renderGroupsTable(groups) {
-    const tbody = document.getElementById('groups-tbody');
-    
-    if (groups.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted">暂无分组</td></tr>';
-        return;
-    }
-    
-    tbody.innerHTML = groups.map(group => `
-        <tr>
-            <td><code>${group.id}</code></td>
-            <td>${group.name}</td>
-            <td>${group.description || '-'}</td>
-            <td>${group.max_instances || 10}</td>
-            <td>${group.parent_group ? `<span class="badge">${group.parent_group}</span>` : '-'}</td>
-            <td>${(group.tags || []).map(tag => `<span class="badge" style="margin: 2px;">${tag}</span>`).join('')}</td>
-            <td>${formatTime(group.created_at || Date.now() / 1000)}</td>
-            <td>
-                ${!['default', 'test', 'production'].includes(group.id) ? 
-                    `<button class="btn btn-danger action-btn" onclick="deleteGroup('${group.id}')">删除</button>` : 
-                    '<span class="text-muted">系统分组</span>'
-                }
-            </td>
-        </tr>
-    `).join('');
-}
-
-// 渲染用户资料表格
-function renderProfilesTable(profiles) {
-    const tbody = document.getElementById('profiles-tbody');
-    
-    if (profiles.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="9" class="text-center text-muted">暂无用户资料</td></tr>';
-        return;
-    }
-    
-    tbody.innerHTML = profiles.map(profile => `
-        <tr>
-            <td><code>${profile.id}</code></td>
-            <td>${profile.name}</td>
-            <td>${profile.description || '-'}</td>
-            <td>${formatSize(profile.size_mb || 0)}</td>
-            <td>${profile.is_default ? '<span class="badge" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border-color: #ffc107;">默认</span>' : '-'}</td>
-            <td>${(profile.tags || []).map(tag => `<span class="badge" style="margin: 2px;">${tag}</span>`).join('')}</td>
-            <td>${formatTime(profile.created_at || Date.now() / 1000)}</td>
-            <td>${formatTime(profile.last_used || Date.now() / 1000)}</td>
-            <td>
-                ${!profile.is_default ? 
-                    `<button class="btn btn-danger action-btn" onclick="deleteProfile('${profile.id}')">删除</button>` : 
-                    '<span class="text-muted">默认资料</span>'
-                }
-            </td>
-        </tr>
-    `).join('');
-}
-
-// 格式化文件大小
-function formatSize(sizeMB) {
-    if (sizeMB < 1) {
-        return (sizeMB * 1024).toFixed(1) + ' KB';
-    } else if (sizeMB < 1024) {
-        return sizeMB.toFixed(1) + ' MB';
-    } else {
-        return (sizeMB / 1024).toFixed(1) + ' GB';
-    }
-}
-
-// 获取状态样式类
-function getStatusClass(status) {
-    switch (status) {
-        case 'ready': return 'status-online';
-        case 'error': return 'status-offline';
-        case 'initializing': return 'status-loading';
-        default: return 'status-offline';
-    }
-}
-
-// 过滤实例
-function filterInstances() {
-    const filterValue = document.getElementById('instance-filter').value;
-    const searchValue = document.getElementById('instance-search').value.toLowerCase();
-    
-    let filteredInstances = instancesData;
-    
-    if (filterValue) {
-        filteredInstances = filteredInstances.filter(instance => instance.status === filterValue);
-    }
-    
-    if (searchValue) {
-        filteredInstances = filteredInstances.filter(instance => 
-            (instance.name || '').toLowerCase().includes(searchValue) ||
-            (instance.id || '').toLowerCase().includes(searchValue)
-        );
-    }
-    
-    renderInstancesTable(filteredInstances);
-}
-
-// 显示创建实例模态框
-async function showCreateInstanceModal() {
-    // 加载分组和用户资料选项
-    await loadGroupsAndProfiles();
-    
-    document.getElementById('createInstanceModal').classList.remove('hidden');
-    document.getElementById('modal-overlay').classList.remove('hidden');
-    document.getElementById('instance-name').focus();
+// 获取状态文本
+function getStatusText(status) {
+    const statusMap = {
+        'ready': '就绪',
+        'error': '错误',
+        'initializing': '初始化',
+        'terminated': '已终止'
+    };
+    return statusMap[status] || status;
 }
 
 // 加载分组和用户资料选项
 async function loadGroupsAndProfiles() {
     try {
-        // 并行加载分组和用户资料
-        const [groupsResponse, profilesResponse] = await Promise.all([
-            apiRequest('/api/groups'),
-            apiRequest('/api/profiles')
-        ]);
-        
-        // 填充分组选项
-        const groupSelect = document.getElementById('instance-group');
-        groupSelect.innerHTML = '<option value="">请选择分组</option>';
-        
-        if (groupsResponse.success && groupsResponse.groups) {
-            groupsResponse.groups.forEach(group => {
-                const option = document.createElement('option');
-                option.value = group.id;
-                option.textContent = `${group.name} (${group.id})`;
-                option.title = group.description || group.name;
-                groupSelect.appendChild(option);
+        // 加载分组
+        const groupsResponse = await apiRequest('/api/groups');
+        if (groupsResponse.success) {
+            const groupSelect = document.getElementById('instance-group');
+            groupSelect.innerHTML = '<option value="default">默认分组</option>';
+            groupsResponse.data.forEach(group => {
+                groupSelect.innerHTML += `<option value="${group.id}">${group.name}</option>`;
             });
         }
         
-        // 填充用户资料选项
-        const profileSelect = document.getElementById('instance-profile');
-        profileSelect.innerHTML = '<option value="">请选择用户资料</option>';
-        
-        if (profilesResponse.success && profilesResponse.profiles) {
-            profilesResponse.profiles.forEach(profile => {
-                const option = document.createElement('option');
-                option.value = profile.id;
-                option.textContent = `${profile.name} (${profile.id})`;
-                option.title = profile.description || profile.name;
-                profileSelect.appendChild(option);
+        // 加载用户资料选项
+        const profilesResponse = await apiRequest('/api/profiles');
+        if (profilesResponse.success) {
+            const profileSelect = document.getElementById('instance-profile');
+            profileSelect.innerHTML = '<option value="">请选择用户资料</option>';
+            profilesResponse.data.forEach(profile => {
+                profileSelect.innerHTML += `<option value="${profile.id}">${profile.name}</option>`;
             });
         }
         
     } catch (error) {
         console.error('加载分组和用户资料失败:', error);
-        showAlert('加载选项失败', 'error');
     }
 }
 
-// 隐藏创建实例模态框
-function hideCreateInstanceModal() {
-    document.getElementById('createInstanceModal').classList.add('hidden');
-    document.getElementById('modal-overlay').classList.add('hidden');
-    document.getElementById('createInstanceForm').reset();
-}
-
-// 创建实例（按钮点击处理）
+// 创建实例
 async function createInstance() {
-    try {
-        console.log('开始创建实例流程');
-        
-        // 获取表单数据
-        const name = document.getElementById('instance-name').value.trim();
-        const groupId = document.getElementById('instance-group').value.trim();
-        const profileId = document.getElementById('instance-profile').value.trim();
-        
-        console.log('创建实例参数:', { name, groupId, profileId });
-        
-        // 验证必要参数
-        if (!groupId) {
-            showAlert('请选择实例分组', 'error');
-            document.getElementById('instance-group').focus();
-            return;
-        }
-        
-        if (!profileId) {
+    const form = document.getElementById('create-instance-form');
+    const formData = new FormData(form);
+    
+    const data = {
+        name: formData.get('name'),
+        group_id: formData.get('group_id'),
+        profile_id: formData.get('profile_id')
+    };
+    
+    // 验证必填字段
+    if (!data.name || !data.profile_id) {
+        if (!data.name) {
+            showAlert('请输入实例名称', 'error');
+        } else if (!data.profile_id) {
             showAlert('请选择用户资料', 'error');
-            document.getElementById('instance-profile').focus();
-            return;
         }
-        
-        // 显示创建中状态
-        const submitButton = document.querySelector('#createInstanceModal .btn-primary');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = '创建中...';
-        submitButton.disabled = true;
-        
-        try {
-            console.log('发送创建实例请求');
-            const response = await apiRequest('/api/instances', {
-                method: 'POST',
-                body: JSON.stringify({
-                    name: name || null,  // 如果名称为空则传null，让服务端自动生成
-                    group_id: groupId,
-                    profile_id: profileId
-                })
-            });
-            
-            console.log('创建实例响应:', response);
-            
-            if (response.success) {
-                showAlert('实例创建成功，正在初始化浏览器...', 'success');
-                hideCreateInstanceModal();
-                await loadInstances(); // 刷新实例列表
-            } else {
-                // 显示详细错误信息
-                let errorMessage = '创建实例失败';
-                if (response.message) {
-                    errorMessage += ': ' + response.message;
-                }
-                if (response.error_code) {
-                    switch (response.error_code) {
-                        case 'MISSING_GROUP_ID':
-                            errorMessage = '请选择有效的实例分组';
-                            document.getElementById('instance-group').focus();
-                            break;
-                        case 'MISSING_PROFILE_ID':
-                            errorMessage = '请选择有效的用户资料';
-                            document.getElementById('instance-profile').focus();
-                            break;
-                        case 'INVALID_GROUP':
-                            errorMessage = '选择的分组无效或不存在，请重新选择';
-                            document.getElementById('instance-group').focus();
-                            break;
-                        case 'INVALID_PROFILE':
-                            errorMessage = '选择的用户资料无效或不存在，请重新选择';
-                            document.getElementById('instance-profile').focus();
-                            break;
-                        default:
-                            errorMessage = response.message || '创建实例失败';
-                    }
-                }
-                showAlert(errorMessage, 'error');
-            }
-        } finally {
-            // 恢复按钮状态
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-        
-    } catch (error) {
-        console.error('创建实例失败:', error);
-        showAlert('创建实例失败，请检查网络连接', 'error');
-    }
-}
-
-// 注入脚本
-async function injectScript(instanceId) {
-    // 无需输入脚本，直接批量注入 js_modules 目录下的所有脚本文件
-    if (!confirm('确认要为该实例批量注入所有 JavaScript 模块吗？')) {
         return;
     }
-
-    try {
-        const response = await apiRequest(`/api/instances/${instanceId}/inject`, {
-            method: 'GET'
-        });
-
-        if (response && response.success) {
-            showAlert('批量注入成功', 'success');
-        } else {
-            const msg = response && response.message ? response.message : '批量注入失败';
-            showAlert('脚本注入失败: ' + msg, 'error');
-        }
-    } catch (error) {
-        console.error('批量注入脚本失败:', error);
-        showAlert('脚本注入失败', 'error');
-    }
-}
-
-// 执行命令
-async function executeCommand(instanceId) {
-    const command = prompt('请输入要执行的命令:');
-    if (!command) return;
     
     try {
-        const response = await apiRequest(`/api/instances/${instanceId}/execute`, {
+        const response = await apiRequest('/api/instances', {
             method: 'POST',
-            body: JSON.stringify({ command: command })
+            body: JSON.stringify(data)
         });
         
         if (response.success) {
-            showAlert('命令执行成功', 'success');
-            console.log('执行结果:', response.result);
+            showAlert('实例创建成功', 'success');
+            hideCreateInstanceModal();
+            loadInstances();
+            form.reset();
         } else {
-            showAlert('命令执行失败: ' + response.message, 'error');
+            showAlert('创建实例失败: ' + response.message, 'error');
         }
     } catch (error) {
-        console.error('执行命令失败:', error);
-        showAlert('执行命令失败', 'error');
+        console.error('创建实例失败:', error);
+        showAlert('创建实例失败', 'error');
     }
 }
 
 // 销毁实例
 async function destroyInstance(instanceId) {
-    if (!confirm('确定要销毁这个实例吗？此操作不可恢复。')) {
+    if (!confirm('确定要销毁这个实例吗？此操作不可逆。')) {
         return;
     }
     
@@ -878,7 +595,7 @@ async function destroyInstance(instanceId) {
         
         if (response.success) {
             showAlert('实例销毁成功', 'success');
-            await loadInstances();
+            loadInstances();
         } else {
             showAlert('销毁实例失败: ' + response.message, 'error');
         }
@@ -888,313 +605,47 @@ async function destroyInstance(instanceId) {
     }
 }
 
-// 刷新仪表板数据
-async function refreshData() {
-    try {
-        showAlert('正在刷新数据...', 'info');
-        
-        // 并行刷新所有数据
-        await Promise.all([
-            loadSystemStatus(),
-            loadInstances(),
-            loadGroups(),
-            loadProfiles()
-        ]);
-        
-        showAlert('数据刷新成功', 'success');
-        
-    } catch (error) {
-        console.error('刷新数据失败:', error);
-        showAlert('刷新数据失败', 'error');
-    }
+// 查看实例详情
+function viewInstance(instanceId) {
+    window.location.href = `/instances?id=${instanceId}`;
 }
 
-// 导出日志
-function exportLogs() {
-    showAlert('日志导出功能开发中...', 'warning');
+// 显示创建实例模态框
+function showCreateInstanceModal() {
+    loadGroupsAndProfiles();
+    document.getElementById('create-instance-modal').style.display = 'block';
 }
 
-// 紧急停止
-function emergencyStop() {
-    if (!confirm('确定要执行紧急停止吗？这将终止所有实例。')) {
-        return;
-    }
-    showAlert('紧急停止功能开发中...', 'warning');
+// 隐藏创建实例模态框
+function hideCreateInstanceModal() {
+    document.getElementById('create-instance-modal').style.display = 'none';
 }
 
-// 启动实时数据更新
-function startRealTimeUpdates() {
-    // 30秒更新一次系统状态
-    setInterval(loadSystemStatus, 30000);
-    
-    // 60秒更新一次实例列表
-    setInterval(loadInstances, 60000);
-    
-    // 5分钟更新一次分组和用户资料（变化较少）
-    setInterval(() => {
-        loadGroups();
-        loadProfiles();
-    }, 300000);
+// 加载用户资料列表
+async function loadProfiles() {
+    // 简化实现，实际应该调用API
+    const tbody = document.getElementById('profiles-table-body');
+    tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">暂无用户资料</td></tr>';
 }
-
-// ================================
-// 分组管理相关函数
-// ================================
-
-// 显示创建分组模态框
-async function showCreateGroupModal() {
-    try {
-        // 加载现有分组作为父分组选项
-        await loadParentGroups();
-        
-        document.getElementById('createGroupModal').classList.remove('hidden');
-        document.getElementById('modal-overlay').classList.remove('hidden');
-        document.getElementById('group-id').focus();
-        
-    } catch (error) {
-        console.error('显示创建分组模态框失败:', error);
-        showAlert('加载分组数据失败', 'error');
-    }
-}
-
-// 隐藏创建分组模态框
-function hideCreateGroupModal() {
-    document.getElementById('createGroupModal').classList.add('hidden');
-    document.getElementById('modal-overlay').classList.add('hidden');
-    document.getElementById('createGroupForm').reset();
-}
-
-// 加载父分组选项
-async function loadParentGroups() {
-    try {
-        const response = await apiRequest('/api/groups');
-        
-        const parentSelect = document.getElementById('group-parent');
-        parentSelect.innerHTML = '<option value="">无父分组</option>';
-        
-        if (response.success && response.groups) {
-            response.groups.forEach(group => {
-                const option = document.createElement('option');
-                option.value = group.id;
-                option.textContent = `${group.name} (${group.id})`;
-                option.title = group.description || group.name;
-                parentSelect.appendChild(option);
-            });
-        }
-        
-    } catch (error) {
-        console.error('加载父分组选项失败:', error);
-    }
-}
-
-// 创建分组
-async function createGroup() {
-    try {
-        const form = document.getElementById('createGroupForm');
-        const formData = new FormData(form);
-        
-        // 处理标签
-        const tagsInput = formData.get('tags');
-        const tags = tagsInput ? tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-        
-        const data = {
-            group_id: formData.get('group_id'),
-            name: formData.get('name'),
-            description: formData.get('description'),
-            max_instances: parseInt(formData.get('max_instances')) || 10,
-            parent_group: formData.get('parent_group') || null,
-            tags: tags
-        };
-        
-        // 验证必要字段
-        if (!data.group_id || !data.name) {
-            showAlert('请填写分组ID和名称', 'error');
-            return;
-        }
-        
-        // 显示创建中状态
-        const submitButton = document.querySelector('#createGroupModal .btn-primary');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = '创建中...';
-        submitButton.disabled = true;
-        
-        try {
-            const response = await apiRequest('/api/groups', {
-                method: 'POST',
-                body: JSON.stringify(data)
-            });
-            
-            if (response.success) {
-                showAlert('分组创建成功', 'success');
-                hideCreateGroupModal();
-                await refreshData(); // 刷新数据
-            } else {
-                showAlert(response.message || '分组创建失败', 'error');
-            }
-            
-        } finally {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-        
-    } catch (error) {
-        console.error('创建分组失败:', error);
-        showAlert('创建分组失败', 'error');
-    }
-}
-
-// 删除分组
-async function deleteGroup(groupId) {
-    if (!confirm(`确定要删除分组 "${groupId}" 吗？\n\n注意：如果分组有子分组或实例，删除将失败。`)) {
-        return;
-    }
-    
-    try {
-        const response = await apiRequest(`/api/groups/${groupId}`, {
-            method: 'DELETE'
-        });
-        
-        if (response.success) {
-            showAlert('分组删除成功', 'success');
-            await loadGroups(); // 重新加载分组列表
-        } else {
-            showAlert(response.message || '分组删除失败', 'error');
-        }
-        
-    } catch (error) {
-        console.error('删除分组失败:', error);
-        showAlert('删除分组失败', 'error');
-    }
-}
-
-// ================================
-// 用户资料管理相关函数
-// ================================
 
 // 显示创建用户资料模态框
-async function showCreateProfileModal() {
-    try {
-        // 加载现有资料作为克隆源选项
-        await loadCloneSourceProfiles();
-        
-        document.getElementById('createProfileModal').classList.remove('hidden');
-        document.getElementById('modal-overlay').classList.remove('hidden');
-        document.getElementById('profile-name').focus();
-        
-    } catch (error) {
-        console.error('显示创建用户资料模态框失败:', error);
-        showAlert('加载资料数据失败', 'error');
-    }
+function showCreateProfileModal() {
+    showAlert('创建用户资料功能开发中...', 'warning');
 }
 
 // 隐藏创建用户资料模态框
 function hideCreateProfileModal() {
-    document.getElementById('createProfileModal').classList.add('hidden');
-    document.getElementById('modal-overlay').classList.add('hidden');
-    document.getElementById('createProfileForm').reset();
-}
-
-// 加载克隆源资料选项
-async function loadCloneSourceProfiles() {
-    try {
-        const response = await apiRequest('/api/profiles');
-        
-        const cloneSelect = document.getElementById('profile-clone-from');
-        cloneSelect.innerHTML = '<option value="">创建空白资料</option>';
-        
-        if (response.success && response.profiles) {
-            response.profiles.forEach(profile => {
-                const option = document.createElement('option');
-                option.value = profile.id;
-                option.textContent = `${profile.name} (${profile.id})`;
-                option.title = profile.description || profile.name;
-                cloneSelect.appendChild(option);
-            });
-        }
-        
-    } catch (error) {
-        console.error('加载克隆源资料选项失败:', error);
-    }
+    document.getElementById('create-profile-modal').style.display = 'none';
 }
 
 // 创建用户资料
-async function createProfile() {
-    try {
-        const form = document.getElementById('createProfileForm');
-        const formData = new FormData(form);
-        
-        // 处理标签
-        const tagsInput = formData.get('tags');
-        const tags = tagsInput ? tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-        
-        const data = {
-            profile_id: formData.get('profile_id') || null,
-            name: formData.get('name') || null,
-            description: formData.get('description'),
-            clone_from: formData.get('clone_from') || null,
-            tags: tags
-        };
-        
-        // 显示创建中状态
-        const submitButton = document.querySelector('#createProfileModal .btn-primary');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = '创建中...';
-        submitButton.disabled = true;
-        
-        try {
-            const response = await apiRequest('/api/profiles', {
-                method: 'POST',
-                body: JSON.stringify(data)
-            });
-            
-            if (response.success) {
-                showAlert('用户资料创建成功', 'success');
-                hideCreateProfileModal();
-                await loadProfiles(); // 刷新数据
-            } else {
-                showAlert(response.message || '用户资料创建失败', 'error');
-            }
-            
-        } finally {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-        
-    } catch (error) {
-        console.error('创建用户资料失败:', error);
-        showAlert('创建用户资料失败', 'error');
-    }
+function createProfile() {
+    showAlert('创建用户资料功能开发中...', 'warning');
 }
 
 // 删除用户资料
-async function deleteProfile(profileId) {
-    if (!confirm(`确定要删除用户资料 "${profileId}" 吗？\n\n注意：这将删除所有相关的浏览器数据（缓存、Cookie等）。`)) {
-        return;
-    }
-    
-    try {
-        const response = await apiRequest(`/api/profiles/${profileId}`, {
-            method: 'DELETE'
-        });
-        
-        if (response.success) {
-            showAlert('用户资料删除成功', 'success');
-            await loadProfiles(); // 刷新数据
-        } else {
-            showAlert(response.message || '用户资料删除失败', 'error');
-        }
-        
-    } catch (error) {
-        console.error('删除用户资料失败:', error);
-        showAlert('删除用户资料失败', 'error');
-    }
-}
-
-// 隐藏所有模态框
-function hideAllModals() {
-    hideCreateInstanceModal();
-    hideCreateGroupModal();
-    hideCreateProfileModal();
+function deleteProfile(profileId) {
+    showAlert('删除用户资料功能开发中...', 'warning');
 }
 </script>
-{% endblock %} 
+{% endblock %}

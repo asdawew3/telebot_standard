@@ -1,109 +1,937 @@
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:<module>:53][main] 服务器模块导入完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:<module>:54][main] 当前工作目录: C:\Users\Administrator\Desktop\github_clone\telebot_standard
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:<module>:55][main] 脚本所在目录: C:\Users\Administrator\Desktop\github_clone\telebot_standard
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:<module>:56][main] Python包导入路径设置完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:397][main] ============================================================
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:398][main] Telegram Bot服务器启动
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:399][main] ============================================================
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:404][main] 服务器配置加载完成: 端口=5000, 主机=0.0.0.0
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:407][main] 开始网络配置检查
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:get_network_manager:296][get_network_manager] 创建全局网络管理器实例
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:__init__:26][NetworkManager.__init__] 初始化网络管理器
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:__init__:33][NetworkManager.__init__] 检测到操作系统: windows
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:__init__:34][NetworkManager.__init__] 网络管理器初始化完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:main:411][main] 检查端口 5000 的可访问性
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.87.80
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:414][main] 端口状态检查结果 - 监听: True, 可绑定: True, 本地IP: 192.168.87.80
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:420][main] 网络配置建议:
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:422][main]   - 端口已在使用中，可能有其他服务正在运行
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:422][main]   - 如需外部访问，请在Windows防火墙中允许该端口
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:422][main]   - 确保服务器监听地址设置为 0.0.0.0 以允许外部连接
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:425][main] 开始清理端口 5000 上的僵尸连接
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:check_port_status:82][check_port_status] 检查端口 5000 状态
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:check_port_status:91][check_port_status] 端口 5000 可用
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:444][main] 端口 5000 初始状态正常，无需清理
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:447][main] 开始验证运行环境
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:validate_environment:300][validate_environment] 开始验证运行环境
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:309][validate_environment] Python版本检查通过: sys.version_info(major=3, minor=13, micro=3, releaselevel='final', serial=0)
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:319][validate_environment] 目录已存在: logs
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:319][validate_environment] 目录已存在: js_modules
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:319][validate_environment] 目录已存在: profiles
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:validate_environment:325][validate_environment] 找到 js_modules 文件夹，包含 3 个JavaScript文件
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:327][validate_environment] JavaScript文件: console_control_system.js
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:327][validate_environment] JavaScript文件: console_test.js
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:327][validate_environment] JavaScript文件: message_queue_system.js
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [server.py:validate_environment:338][validate_environment] 配置文件指定的JavaScript文件检查通过: js_modules\console_test.js
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:validate_environment:340][validate_environment] 运行环境验证完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:451][main] 运行环境验证通过
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:454][main] 设置信号处理器
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:setup_signal_handlers:273][setup_signal_handlers] 设置信号处理器
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:setup_signal_handlers:296][setup_signal_handlers] 信号处理器设置完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:456][main] 信号处理器设置完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:459][main] 显示启动横幅
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:print_startup_banner:349][print_startup_banner] 显示启动横幅
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.87.80
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:print_startup_banner:389][print_startup_banner] 服务器启动横幅显示完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:463][main] 准备启动Flask服务器
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [server.py:main:464][main] 服务器将在 http://0.0.0.0:5000 上启动
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:run_server:869][run_server] 启动Telegram Bot服务器
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:create_app:41][create_app] 开始创建Flask应用
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:48][create_app] Flask应用实例创建完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:62][create_app] Flask基础配置完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:65][create_app] 初始化Flask扩展
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:69][create_app] CORS支持已启用
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:73][create_app] 会话管理已初始化
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [auth.py:get_auth_manager:572][get_auth_manager] 获取认证管理器实例
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [auth.py:init_app:486][AuthManager.init_app] 初始化Flask应用认证
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [auth.py:init_app:501][AuthManager.init_app] Flask应用认证初始化完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:78][create_app] 认证管理器已初始化
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:82][create_app] 请求钩子已注册
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:85][create_app] 开始注册应用路由
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:register_api_routes:100][register_api_routes] 开始注册API路由
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [auth.py:get_auth_manager:572][get_auth_manager] 获取认证管理器实例
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:register_api_routes:853][register_api_routes] API路由注册完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [web_routes.py:register_web_routes:33][register_web_routes] 开始注册Web界面路由
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [web_routes.py:register_web_routes:406][register_web_routes] Web界面路由注册完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [app.py:create_app:88][create_app] 应用路由注册完成
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:create_app:90][create_app] Flask应用创建完成
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:258][get_config] 获取服务器配置
-2025-07-19 14:59:59 [DEBUG] [debug:231] [PID:30216] [TID:48596] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
-2025-07-19 14:59:59 [INFO] [info:252] [PID:30216] [TID:48596] [app.py:run_server:879][run_server] 服务器启动在 http://0.0.0.0:5000
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:<module>:53][main] 服务器模块导入完成
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:<module>:54][main] 当前工作目录: C:\Users\Administrator\Desktop\github_clone\telebot_standard
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:<module>:55][main] 脚本所在目录: C:\Users\Administrator\Desktop\github_clone\telebot_standard
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:<module>:56][main] Python包导入路径设置完成
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:397][main] ============================================================
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:398][main] Telegram Bot服务器启动
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:399][main] ============================================================
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:404][main] 服务器配置加载完成: 端口=5000, 主机=0.0.0.0
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:407][main] 开始网络配置检查
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:get_network_manager:296][get_network_manager] 创建全局网络管理器实例
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:__init__:26][NetworkManager.__init__] 初始化网络管理器
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:__init__:33][NetworkManager.__init__] 检测到操作系统: windows
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:__init__:34][NetworkManager.__init__] 网络管理器初始化完成
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:main:411][main] 检查端口 5000 的可访问性
+2025-08-03 07:04:17 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:04:17 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: False
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: False
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_generate_suggestions:143][NetworkManager._generate_suggestions] 添加建议: 端口可用
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:414][main] 端口状态检查结果 - 监听: False, 可绑定: True, 本地IP: 192.168.165.80
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:420][main] 网络配置建议:
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:422][main]   - 端口可用，服务器可以正常启动
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:422][main]   - 如需外部访问，请在Windows防火墙中允许该端口
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:422][main]   - 确保服务器监听地址设置为 0.0.0.0 以允许外部连接
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:425][main] 开始清理端口 5000 上的僵尸连接
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:check_port_status:82][check_port_status] 检查端口 5000 状态
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:check_port_status:91][check_port_status] 端口 5000 可用
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:444][main] 端口 5000 初始状态正常，无需清理
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:447][main] 开始验证运行环境
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:validate_environment:300][validate_environment] 开始验证运行环境
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:309][validate_environment] Python版本检查通过: sys.version_info(major=3, minor=13, micro=3, releaselevel='final', serial=0)
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:319][validate_environment] 目录已存在: logs
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:319][validate_environment] 目录已存在: js_modules
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:319][validate_environment] 目录已存在: profiles
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:validate_environment:325][validate_environment] 找到 js_modules 文件夹，包含 3 个JavaScript文件
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:327][validate_environment] JavaScript文件: console_control_system.js
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:327][validate_environment] JavaScript文件: console_test.js
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:327][validate_environment] JavaScript文件: message_queue_system.js
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [server.py:validate_environment:338][validate_environment] 配置文件指定的JavaScript文件检查通过: js_modules\console_test.js
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:validate_environment:340][validate_environment] 运行环境验证完成
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:451][main] 运行环境验证通过
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:454][main] 设置信号处理器
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:setup_signal_handlers:273][setup_signal_handlers] 设置信号处理器
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:setup_signal_handlers:296][setup_signal_handlers] 信号处理器设置完成
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:456][main] 信号处理器设置完成
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:459][main] 显示启动横幅
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:print_startup_banner:349][print_startup_banner] 显示启动横幅
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:04:18 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:04:18 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: False
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: False
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_generate_suggestions:143][NetworkManager._generate_suggestions] 添加建议: 端口可用
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:04:19 [INFO] [info:252] [PID:3676] [TID:31516] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:04:19 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:print_startup_banner:389][print_startup_banner] 服务器启动横幅显示完成
+2025-08-03 07:04:19 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:463][main] 准备启动Flask服务器
+2025-08-03 07:04:19 [INFO] [info:252] [PID:3676] [TID:31516] [server.py:main:464][main] 服务器将在 http://0.0.0.0:5000 上启动
+2025-08-03 07:04:19 [INFO] [info:252] [PID:3676] [TID:31516] [app.py:run_server:869][run_server] 启动Telegram Bot服务器
+2025-08-03 07:04:19 [INFO] [info:252] [PID:3676] [TID:31516] [app.py:create_app:41][create_app] 开始创建Flask应用
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:48][create_app] Flask应用实例创建完成
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:62][create_app] Flask基础配置完成
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:65][create_app] 初始化Flask扩展
+2025-08-03 07:04:19 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:69][create_app] CORS支持已启用
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:73][create_app] 会话管理已初始化
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [auth.py:get_auth_manager:572][get_auth_manager] 获取认证管理器实例
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [auth.py:init_app:486][AuthManager.init_app] 初始化Flask应用认证
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [auth.py:init_app:501][AuthManager.init_app] Flask应用认证初始化完成
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:78][create_app] 认证管理器已初始化
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:82][create_app] 请求钩子已注册
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:85][create_app] 开始注册应用路由
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [app.py:register_api_routes:100][register_api_routes] 开始注册API路由
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [auth.py:get_auth_manager:572][get_auth_manager] 获取认证管理器实例
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [app.py:register_api_routes:853][register_api_routes] API路由注册完成
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [web_routes.py:register_web_routes:33][register_web_routes] 开始注册Web界面路由
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [web_routes.py:register_web_routes:406][register_web_routes] Web界面路由注册完成
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [app.py:create_app:88][create_app] 应用路由注册完成
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [app.py:create_app:90][create_app] Flask应用创建完成
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:04:20 [DEBUG] [debug:231] [PID:3676] [TID:31516] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:04:20 [INFO] [info:252] [PID:3676] [TID:31516] [app.py:run_server:879][run_server] 服务器启动在 http://0.0.0.0:5000
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:18472] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=None...
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:24048] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=None...
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:18472] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:24048] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:18472] [auth.py:verify_current_user:345][AuthManager.verify_current_user] 用户未认证
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:24048] [auth.py:verify_current_user:345][AuthManager.verify_current_user] 用户未认证
+2025-08-03 07:04:29 [WARNING] [warning:273] [PID:3676] [TID:18472] [request_hooks.py:_before_request_logging:45][request_hooks.before] API 令牌验证失败: NOT_AUTHENTICATED
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:18472] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 401
+2025-08-03 07:04:29 [WARNING] [warning:273] [PID:3676] [TID:24048] [request_hooks.py:_before_request_logging:45][request_hooks.before] API 令牌验证失败: NOT_AUTHENTICATED
+2025-08-03 07:04:29 [DEBUG] [debug:231] [PID:3676] [TID:24048] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 401
+2025-08-03 07:04:30 [DEBUG] [debug:231] [PID:3676] [TID:31168] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /dashboard from 127.0.0.1, token=None...
+2025-08-03 07:04:30 [DEBUG] [debug:231] [PID:3676] [TID:31168] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /dashboard ==> 302
+2025-08-03 07:04:30 [DEBUG] [debug:231] [PID:3676] [TID:30100] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/login from 127.0.0.1, token=None...
+2025-08-03 07:04:30 [DEBUG] [debug:231] [PID:3676] [TID:30100] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/login ==> 405
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:1204] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET / from 127.0.0.1, token=None...
+2025-08-03 07:04:33 [INFO] [info:252] [PID:3676] [TID:1204] [web_routes.py:index:42][index] 处理首页访问请求
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:1204] [web_routes.py:index:43][index] 用户认证状态: False
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:1204] [web_routes.py:index:44][index] 请求来源IP: 127.0.0.1
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:1204] [web_routes.py:index:45][index] 用户代理: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+2025-08-03 07:04:33 [INFO] [info:252] [PID:3676] [TID:1204] [web_routes.py:index:57][index] 用户未登录，跳转到登录页面
+2025-08-03 07:04:33 [INFO] [operation:364] [PID:3676] [TID:1204] 【OPERATION】[web_routes.py:index:58][index] 未登录用户访问首页，重定向到登录页 | 数据: {'remote_addr': '127.0.0.1', 'redirect_to': 'login_page'}
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:1204] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET / ==> 302
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:22656] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /login from 127.0.0.1, token=None...
+2025-08-03 07:04:33 [INFO] [info:252] [PID:3676] [TID:22656] [web_routes.py:login_page:76][login_page] 处理登录页面访问请求
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:22656] [web_routes.py:login_page:77][login_page] 用户认证状态: False
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:22656] [web_routes.py:login_page:78][login_page] 请求来源IP: 127.0.0.1
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:22656] [web_routes.py:login_page:91][login_page] 渲染登录页面模板
+2025-08-03 07:04:33 [INFO] [operation:364] [PID:3676] [TID:22656] 【OPERATION】[web_routes.py:login_page:92][login_page] 显示登录页面 | 数据: {'remote_addr': '127.0.0.1', 'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'}
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:22656] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /login ==> 200
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:5840] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/verify-token from 127.0.0.1, token=None...
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:5840] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:5840] [auth.py:verify_current_user:345][AuthManager.verify_current_user] 用户未认证
+2025-08-03 07:04:33 [WARNING] [warning:273] [PID:3676] [TID:5840] [request_hooks.py:_before_request_logging:45][request_hooks.before] API 令牌验证失败: NOT_AUTHENTICATED
+2025-08-03 07:04:33 [DEBUG] [debug:231] [PID:3676] [TID:5840] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/verify-token ==> 401
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] POST /api/login from 127.0.0.1, token=None...
+2025-08-03 07:04:35 [INFO] [info:252] [PID:3676] [TID:23036] [app.py:login:113][login] 处理用户登录请求
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [app.py:login:136][login] 尝试登录用户: 10086
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [auth.py:login_user:452][AuthManager.login_user] 调用登录用户方法: 10086
+2025-08-03 07:04:35 [INFO] [info:252] [PID:3676] [TID:23036] [auth.py:authenticate_user:187][AuthManager.authenticate_user] 开始用户认证: 10086
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [auth.py:get_id:61][User.get_id] 获取用户ID: 10086
+2025-08-03 07:04:35 [INFO] [info:252] [PID:3676] [TID:23036] [auth.py:authenticate_user:273][AuthManager.authenticate_user] 用户认证成功: 10086, 令牌ID: 0b2ced34...
+2025-08-03 07:04:35 [INFO] [info:252] [PID:3676] [TID:23036] [app.py:login:143][login] 用户登录成功: 10086
+2025-08-03 07:04:35 [DEBUG] [debug:231] [PID:3676] [TID:23036] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] POST /api/login ==> 200
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /dashboard from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:04:36 [INFO] [info:252] [PID:3676] [TID:14640] [web_routes.py:dashboard:153][dashboard] 处理仪表板访问请求: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [web_routes.py:dashboard:154][dashboard] 用户权限: ['all']
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [web_routes.py:dashboard:170][dashboard] 渲染仪表板页面模板
+2025-08-03 07:04:36 [INFO] [operation:364] [PID:3676] [TID:14640] 【OPERATION】[web_routes.py:dashboard:171][dashboard] 用户访问仪表板 | 数据: {'username': '10086', 'access_time': 1754175876.6941068, 'remote_addr': '127.0.0.1'}
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:14640] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /dashboard ==> 200
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:04:36 [INFO] [info:252] [PID:3676] [TID:29996] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:04:36 [INFO] [info:252] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:04:36 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:04:37 [INFO] [info:252] [PID:3676] [TID:29996] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:04:37 [INFO] [info:252] [PID:3676] [TID:29996] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:29996] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:04:37 [INFO] [info:252] [PID:3676] [TID:17100] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:04:37 [INFO] [info:252] [PID:3676] [TID:17100] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:04:37 [DEBUG] [debug:231] [PID:3676] [TID:17100] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:05:07 [INFO] [info:252] [PID:3676] [TID:14204] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:05:07 [INFO] [info:252] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:05:07 [INFO] [info:252] [PID:3676] [TID:14204] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:05:07 [INFO] [info:252] [PID:3676] [TID:14204] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:05:07 [DEBUG] [debug:231] [PID:3676] [TID:14204] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:05:37 [INFO] [info:252] [PID:3676] [TID:18756] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:05:37 [INFO] [info:252] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:05:37 [INFO] [info:252] [PID:3676] [TID:18756] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:05:37 [INFO] [info:252] [PID:3676] [TID:18756] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:18756] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:05:37 [INFO] [info:252] [PID:3676] [TID:796] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:05:37 [INFO] [info:252] [PID:3676] [TID:796] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:05:37 [DEBUG] [debug:231] [PID:3676] [TID:796] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:06:07 [INFO] [info:252] [PID:3676] [TID:2616] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:06:07 [INFO] [info:252] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:06:07 [INFO] [info:252] [PID:3676] [TID:2616] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:06:07 [INFO] [info:252] [PID:3676] [TID:2616] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:06:07 [DEBUG] [debug:231] [PID:3676] [TID:2616] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:06:37 [INFO] [info:252] [PID:3676] [TID:24472] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:06:37 [INFO] [info:252] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:06:37 [INFO] [info:252] [PID:3676] [TID:24472] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:06:37 [INFO] [info:252] [PID:3676] [TID:24472] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:24472] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:06:37 [INFO] [info:252] [PID:3676] [TID:28904] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:06:37 [INFO] [info:252] [PID:3676] [TID:28904] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:06:37 [DEBUG] [debug:231] [PID:3676] [TID:28904] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:07:07 [INFO] [info:252] [PID:3676] [TID:31992] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:07:07 [INFO] [info:252] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:07:07 [INFO] [info:252] [PID:3676] [TID:31992] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:07:07 [INFO] [info:252] [PID:3676] [TID:31992] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:07:07 [DEBUG] [debug:231] [PID:3676] [TID:31992] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:07:37 [INFO] [info:252] [PID:3676] [TID:26504] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:07:37 [INFO] [info:252] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:07:37 [INFO] [info:252] [PID:3676] [TID:26504] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:07:37 [INFO] [info:252] [PID:3676] [TID:26504] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:26504] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:07:37 [INFO] [info:252] [PID:3676] [TID:23840] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:07:37 [INFO] [info:252] [PID:3676] [TID:23840] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:07:37 [DEBUG] [debug:231] [PID:3676] [TID:23840] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:08:07 [INFO] [info:252] [PID:3676] [TID:27844] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:08:07 [INFO] [info:252] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:08:07 [INFO] [info:252] [PID:3676] [TID:27844] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:08:07 [INFO] [info:252] [PID:3676] [TID:27844] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:08:07 [DEBUG] [debug:231] [PID:3676] [TID:27844] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:08:37 [INFO] [info:252] [PID:3676] [TID:31796] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:08:37 [INFO] [info:252] [PID:3676] [TID:31796] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:08:37 [DEBUG] [debug:231] [PID:3676] [TID:31796] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:09:04 [INFO] [info:252] [PID:3676] [TID:32124] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:09:04 [INFO] [info:252] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:09:04 [INFO] [info:252] [PID:3676] [TID:32124] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:09:04 [INFO] [info:252] [PID:3676] [TID:32124] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:09:04 [DEBUG] [debug:231] [PID:3676] [TID:32124] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:09:17 [DEBUG] [debug:231] [PID:3676] [TID:27944] [instance_manager.py:_cleanup_expired_instances:1876][InstancePool._cleanup_expired_instances] 开始清理过期实例
+2025-08-03 07:09:17 [DEBUG] [debug:231] [PID:3676] [TID:27944] [instance_manager.py:_cleanup_expired_instances:1902][InstancePool._cleanup_expired_instances] 没有发现过期实例
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:09:37 [INFO] [info:252] [PID:3676] [TID:25728] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:09:37 [INFO] [info:252] [PID:3676] [TID:25728] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:09:37 [DEBUG] [debug:231] [PID:3676] [TID:25728] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:10:04 [INFO] [info:252] [PID:3676] [TID:3280] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:10:04 [INFO] [info:252] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:10:04 [INFO] [info:252] [PID:3676] [TID:3280] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:10:04 [INFO] [info:252] [PID:3676] [TID:3280] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:10:04 [DEBUG] [debug:231] [PID:3676] [TID:3280] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:10:37 [INFO] [info:252] [PID:3676] [TID:28968] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:10:37 [INFO] [info:252] [PID:3676] [TID:28968] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:10:37 [DEBUG] [debug:231] [PID:3676] [TID:28968] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:11:04 [INFO] [info:252] [PID:3676] [TID:2488] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:11:04 [INFO] [info:252] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:11:04 [INFO] [info:252] [PID:3676] [TID:2488] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:11:04 [INFO] [info:252] [PID:3676] [TID:2488] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:11:04 [DEBUG] [debug:231] [PID:3676] [TID:2488] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:12:04 [INFO] [info:252] [PID:3676] [TID:15396] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:12:04 [INFO] [info:252] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:12:04 [INFO] [info:252] [PID:3676] [TID:15396] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:12:04 [INFO] [info:252] [PID:3676] [TID:15396] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:15396] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:12:04 [INFO] [info:252] [PID:3676] [TID:32148] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:12:04 [INFO] [info:252] [PID:3676] [TID:32148] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:12:04 [DEBUG] [debug:231] [PID:3676] [TID:32148] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:13:04 [INFO] [info:252] [PID:3676] [TID:9016] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:13:04 [INFO] [info:252] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:13:04 [INFO] [info:252] [PID:3676] [TID:3520] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:13:04 [INFO] [info:252] [PID:3676] [TID:3520] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:3520] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:13:04 [INFO] [info:252] [PID:3676] [TID:9016] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:13:04 [INFO] [info:252] [PID:3676] [TID:9016] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:13:04 [DEBUG] [debug:231] [PID:3676] [TID:9016] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:14:04 [INFO] [info:252] [PID:3676] [TID:22460] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:14:04 [INFO] [info:252] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:14:04 [INFO] [info:252] [PID:3676] [TID:22460] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:14:04 [INFO] [info:252] [PID:3676] [TID:22460] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:22460] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:14:04 [INFO] [info:252] [PID:3676] [TID:32524] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:14:04 [INFO] [info:252] [PID:3676] [TID:32524] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:14:04 [DEBUG] [debug:231] [PID:3676] [TID:32524] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:14:17 [DEBUG] [debug:231] [PID:3676] [TID:27944] [instance_manager.py:_cleanup_expired_instances:1876][InstancePool._cleanup_expired_instances] 开始清理过期实例
+2025-08-03 07:14:17 [DEBUG] [debug:231] [PID:3676] [TID:27944] [instance_manager.py:_cleanup_expired_instances:1902][InstancePool._cleanup_expired_instances] 没有发现过期实例
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:15:04 [INFO] [info:252] [PID:3676] [TID:17004] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:15:04 [INFO] [info:252] [PID:3676] [TID:17004] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:15:04 [INFO] [info:252] [PID:3676] [TID:29840] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:15:04 [INFO] [info:252] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:17004] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:15:04 [INFO] [info:252] [PID:3676] [TID:29840] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:15:04 [INFO] [info:252] [PID:3676] [TID:29840] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:15:04 [DEBUG] [debug:231] [PID:3676] [TID:29840] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/status from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:16:04 [INFO] [info:252] [PID:3676] [TID:31160] [app.py:server_status:796][server_status] 获取服务器状态信息
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [config.py:get_config:258][get_config] 获取服务器配置
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [config.py:get_config:212][ConfigManager.get_config] 获取配置对象
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:get_network_manager:299][get_network_manager] 返回现有网络管理器实例
+2025-08-03 07:16:04 [INFO] [info:252] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:46][NetworkManager.check_port_accessibility] 检查端口可访问性: 5000
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_get_local_ip:81][NetworkManager._get_local_ip] 获取本地IP地址
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_get_local_ip:89][NetworkManager._get_local_ip] 本地IP地址: 192.168.165.80
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:58][NetworkManager.check_port_accessibility] 检查端口监听状态: 5000
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_is_port_listening:98][NetworkManager._is_port_listening] 检查端口监听状态: 5000
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_is_port_listening:106][NetworkManager._is_port_listening] 端口 5000 监听状态: True
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:60][NetworkManager.check_port_accessibility] 端口监听状态: True
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:63][NetworkManager.check_port_accessibility] 检查端口绑定能力: 5000
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_can_bind_port:115][NetworkManager._can_bind_port] 检查端口绑定能力: 5000
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_can_bind_port:123][NetworkManager._can_bind_port] 端口 5000 可以绑定
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:65][NetworkManager.check_port_accessibility] 端口绑定能力: True
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:68][NetworkManager.check_port_accessibility] 生成网络配置建议
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_generate_suggestions:136][NetworkManager._generate_suggestions] 生成网络配置建议
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_generate_suggestions:147][NetworkManager._generate_suggestions] 添加建议: 端口已占用
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [network_manager.py:_generate_suggestions:162][NetworkManager._generate_suggestions] 生成 3 条建议
+2025-08-03 07:16:04 [INFO] [info:252] [PID:3676] [TID:31160] [network_manager.py:check_port_accessibility:71][NetworkManager.check_port_accessibility] 端口可访问性检查完成: 5000
+2025-08-03 07:16:04 [INFO] [info:252] [PID:3676] [TID:31160] [app.py:server_status:839][server_status] 服务器状态信息获取成功
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:31160] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/status ==> 200
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [request_hooks.py:_before_request_logging:31][request_hooks.before] [REQ] GET /api/instances from 127.0.0.1, token=0b2ced34...
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:verify_current_user:340][AuthManager.verify_current_user] 验证当前用户
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:user_loader:577][user_loader] 加载用户: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:get_user:169][AuthManager.get_user] 获取用户对象: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:__init__:50][User.__init__] 初始化用户对象: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:__init__:57][User.__init__] 用户对象初始化完成: 10086, 权限: ['all']
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:get_user:182][AuthManager.get_user] 用户对象获取成功: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:verify_current_user:407][AuthManager.verify_current_user] 当前用户验证成功: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:decorated_function:614][api_login_required] API登录验证
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:decorated_function:625][api_login_required] API登录验证成功: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:decorated_function:584][require_permission] 验证权限: view
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:check_user_permission:431][AuthManager.check_user_permission] 检查用户权限: view
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:has_permission:82][User.has_permission] 检查用户权限: 10086, 权限: view
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:has_permission:86][User.has_permission] 用户有全部权限: 10086
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:check_user_permission:442][AuthManager.check_user_permission] 用户权限检查结果: 10086, 权限: view, 结果: True
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [auth.py:decorated_function:604][require_permission] 权限验证成功: 10086, 权限: view
+2025-08-03 07:16:04 [INFO] [info:252] [PID:3676] [TID:21144] [app.py:list_instances:466][list_instances] 处理获取实例列表请求
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [instance_manager.py:list_instances:2020][InstancePool.list_instances] 列出实例，分组过滤: None
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [instance_manager.py:list_instances:2033][InstancePool.list_instances] 实例列表查询完成，总数: 0
+2025-08-03 07:16:04 [INFO] [info:252] [PID:3676] [TID:21144] [app.py:list_instances:475][list_instances] 获取实例列表成功，数量: 0
+2025-08-03 07:16:04 [DEBUG] [debug:231] [PID:3676] [TID:21144] [request_hooks.py:_after_request_logging:54][request_hooks.after] [RESP] GET /api/instances ==> 200

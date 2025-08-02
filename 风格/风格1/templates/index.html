@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>税务信息爬虫监控系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* 顶部导航栏 */
+        .navbar {
+            background-color: #1e1e1e;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            height: 50px;
+        }
+        
+        .navbar-brand {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .navbar-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .navbar-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #666;
+        }
+        
+        .status-indicator.connected {
+            background-color: #4caf50;
+        }
+        
+        .status-indicator.running {
+            background-color: #2196f3;
+        }
+        
+        .status-indicator.error {
+            background-color: #f44336;
+        }
+        
+        .navbar-button {
+            padding: 6px 12px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        
+        .navbar-button:hover {
+            background-color: #333333;
+            border-color: #555;
+        }
+        
+        .navbar-button.primary {
+            background-color: #4a6ed3;
+            border-color: #4a6ed3;
+        }
+        
+        .navbar-button.primary:hover {
+            background-color: #3a5ec3;
+        }
+        
+        .navbar-button.danger {
+            background-color: #d32f2f;
+            border-color: #d32f2f;
+        }
+        
+        .navbar-button.danger:hover {
+            background-color: #c62828;
+        }
+        
+        /* 主要内容区域 */
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        /* 左侧边栏 - 系统状态 */
+        .sidebar {
+            width: 320px;
+            background-color: #1a1a1a;
+            border-right: 1px solid #333;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .sidebar-section {
+            border-bottom: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar-header {
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: #252525;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        
+        .sidebar-content {
+            padding: 15px;
+            overflow: visible;
+        }
+        
+        /* 整体侧边栏滚动条样式 */
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar::-webkit-scrollbar-track {
+            background: #2a2a2a;
+            border-radius: 4px;
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+        
+        /* 通用滚动条样式 */
+        .terminal-output::-webkit-scrollbar,
+        .monitor-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .terminal-output::-webkit-scrollbar-track,
+        .monitor-content::-webkit-scrollbar-track {
+            background: #2a2a2a;
+            border-radius: 4px;
+        }
+        
+        .terminal-output::-webkit-scrollbar-thumb,
+        .monitor-content::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        
+        .terminal-output::-webkit-scrollbar-thumb:hover,
+        .monitor-content::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: #aaaaaa;
+            font-size: 14px;
+        }
+        
+        .stat-value {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .stat-value.success {
+            color: #4caf50;
+        }
+        
+        .stat-value.error {
+            color: #f44336;
+        }
+        
+        .stat-value.warning {
+            color: #ff9800;
+        }
+        
+        /* 右侧监控区域 */
+        .monitor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .monitor-header {
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .monitor-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .monitor-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+        
+        /* 监控面板垂直布局 */
+        .monitor-panel {
+            background-color: #1a1a1a;
+            margin-bottom: 1px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .panel-header {
+            padding: 12px 15px;
+            background-color: #252525;
+            border-bottom: 1px solid #333;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .panel-header:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .panel-toggle {
+            font-size: 12px;
+            color: #aaaaaa;
+            transition: transform 0.2s;
+        }
+        
+        .panel-header.collapsed .panel-toggle {
+            transform: rotate(-90deg);
+        }
+        
+        .panel-content {
+            padding: 15px;
+            background-color: #1a1a1a;
+        }
+        
+        .panel-content.collapsed {
+            display: none;
+        }
+        
+        /* 终端输出区域 */
+        .terminal-output {
+            flex: 1;
+            background-color: #0f0f0f;
+            overflow-y: auto;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+        
+        .log-line {
+            margin-bottom: 4px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .log-timestamp {
+            color: #666666;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        
+        .log-level-info {
+            color: #64b5f6;
+        }
+        
+        .log-level-warning {
+            color: #ffb74d;
+        }
+        
+        .log-level-error {
+            color: #e57373;
+        }
+        
+        .log-level-debug {
+            color: #81c784;
+        }
+        
+        .log-module {
+            color: #ba68c8;
+            font-weight: 500;
+        }
+        
+        /* 响应统计表格 */
+        .response-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a1a1a;
+        }
+        
+        .response-table th,
+        .response-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+            font-size: 13px;
+        }
+        
+        .response-table th {
+            background-color: #252525;
+            font-weight: 500;
+            color: #ffffff;
+        }
+        
+        .response-table td {
+            color: #e0e0e0;
+        }
+        
+        .response-table tbody tr:hover {
+            background-color: #252525;
+        }
+        
+        /* 响应状态样式 */
+        .response-table tbody tr.success {
+            border-left: 3px solid #4caf50;
+        }
+        
+        .response-table tbody tr.error {
+            border-left: 3px solid #f44336;
+        }
+        
+        .response-table tbody tr.session-expired {
+            border-left: 3px solid #ff9800;
+            background-color: rgba(255, 152, 0, 0.1);
+        }
+        
+        .response-table tbody tr.session-expired:hover {
+            background-color: rgba(255, 152, 0, 0.2);
+        }
+        
+        /* 详情按钮样式 */
+        .detail-btn {
+            background-color: #4a6ed3;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        
+        .detail-btn:hover {
+            background-color: #5a7ee3;
+        }
+        
+        /* 箭头按钮样式 */
+        .arrow-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            transition: all 0.2s;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .arrow-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .arrow-btn.expanded {
+            color: #4a6ed3;
+        }
+        
+        /* 详情行样式 */
+        .detail-row {
+            background-color: #1a1a1a;
+        }
+        
+        .response-detail {
+            padding: 10px;
+            font-size: 12px;
+        }
+        
+        .response-detail pre {
+            background-color: #0f0f0f;
+            border: 1px solid #333;
+            border-radius: 3px;
+            padding: 8px;
+            margin: 5px 0;
+            overflow-x: auto;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .response-info {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        /* 系统配置区域 */
+        .config-item {
+            margin-bottom: 15px;
+        }
+        
+        .config-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #aaaaaa;
+            font-size: 13px;
+        }
+        
+        .config-input {
+            width: 100%;
+            padding: 8px 10px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 13px;
+            resize: vertical;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        .config-input:focus {
+            outline: none;
+            border-color: #4a6ed3;
+        }
+        
+        textarea.config-input {
+            min-height: 120px;
+            max-height: 200px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .preset-button {
+            flex: 1;
+            padding: 6px 10px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .preset-button:hover {
+            background-color: #333333;
+        }
+        
+        .config-apply-btn {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #4a6ed3;
+            color: #ffffff;
+            border: 1px solid #4a6ed3;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .config-apply-btn:hover {
+            background-color: #3a5ec3;
+            border-color: #3a5ec3;
+        }
+        
+        .config-apply-btn:disabled {
+            background-color: #333;
+            border-color: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        /* 加载状态 */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #666666;
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid #4a6ed3;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+        
+        /* 消息提示 */
+        .message-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 4px;
+            border-left: 4px solid #4a6ed3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+        
+        /* 响应详情展开功能 */
+        .expand-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+        }
+        
+        .expand-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .response-details {
+            display: none;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 8px 10px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .response-details.expanded {
+            display: block;
+        }
+        
+        .detail-section {
+            margin-bottom: 6px;
+        }
+        
+        .detail-label {
+            color: #888;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .detail-value {
+            color: #e0e0e0;
+        }
+        
+        .message-toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .message-toast.success {
+            border-left-color: #4caf50;
+        }
+        
+        .message-toast.error {
+            border-left-color: #f44336;
+        }
+        
+        .message-toast.warning {
+            border-left-color: #ff9800;
+        }
+        
+        .message-toast.info {
+            border-left-color: #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <a href="#" class="navbar-brand">税务信息爬虫监控系统</a>
+        <div class="navbar-controls">
+            <div class="navbar-status">
+                <div class="status-indicator" id="spider-status-indicator"></div>
+                <span id="spider-status-text">系统状态</span>
+            </div>
+            <button class="navbar-button primary" id="start-spider-btn">启动爬虫</button>
+            <button class="navbar-button danger" id="stop-spider-btn" disabled>停止爬虫</button>
+            <button class="navbar-button" id="refresh-stats-btn">刷新状态</button>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-container">
+        <!-- 左侧边栏 - 系统状态 -->
+        <div class="sidebar">
+            <!-- 数据库统计 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">数据库统计</div>
+                <div id="status-error" style="display: none;"></div>
+                <div class="sidebar-content">
+                    <div class="stat-item">
+                        <span class="stat-label">总记录数</span>
+                        <span class="stat-value" id="total-records">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">待处理数</span>
+                        <span class="stat-value" id="pending-records">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">已处理数</span>
+                        <span class="stat-value" id="processed-records">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">成功率</span>
+                        <span class="stat-value" id="success-rate">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API响应统计 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">API响应统计</div>
+                <div class="sidebar-content">
+                    <div class="stat-item">
+                        <span class="stat-label">总请求数</span>
+                        <span class="stat-value" id="api-total-requests">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">成功请求</span>
+                        <span class="stat-value success" id="api-success-requests">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">失败请求</span>
+                        <span class="stat-value error" id="api-error-requests">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">需要登录</span>
+                        <span class="stat-value warning" id="api-session-expired">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 爬虫状态 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">爬虫状态</div>
+                <div class="sidebar-content">
+                    <div class="stat-item">
+                        <span class="stat-label">运行状态</span>
+                        <span class="stat-value" id="spider-status">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">进程ID</span>
+                        <span class="stat-value" id="spider-pid">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">运行时长</span>
+                        <span class="stat-value" id="spider-runtime">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">最后检查</span>
+                        <span class="stat-value" id="last-check">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 请求速度统计 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">请求速度统计</div>
+                <div class="sidebar-content">
+                    <div class="stat-item">
+                        <span class="stat-label">平均请求速度</span>
+                        <span class="stat-value" id="avg-request-speed">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">成功请求速度</span>
+                        <span class="stat-value success" id="success-request-speed">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">失败请求速度</span>
+                        <span class="stat-value error" id="error-request-speed">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">IP失效速度</span>
+                        <span class="stat-value warning" id="ip-ban-speed">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">当前QPS</span>
+                        <span class="stat-value" id="current-qps">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 代理设置 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">代理设置</div>
+                <div class="sidebar-content">
+                    <div class="stat-item">
+                        <span class="stat-label">代理状态</span>
+                        <span class="stat-value" id="proxy-status">未启用</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">队列大小</span>
+                        <span class="stat-value" id="proxy-queue-size">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">总获取数</span>
+                        <span class="stat-value" id="proxy-total-fetched">-</span>
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">启用代理</label>
+                        <select class="config-input" id="proxy-enabled">
+                            <option value="false">关闭</option>
+                            <option value="true">启用</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">代理API地址</label>
+                        <input type="text" class="config-input" id="proxy-api-url" placeholder="http://api.example.com/proxy">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">队列容量</label>
+                        <input type="number" class="config-input" id="proxy-max-pool-size" min="10" max="1000" value="100">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">失效阈值</label>
+                        <input type="number" class="config-input" id="proxy-failure-threshold" min="1" max="10" value="2">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">超时时间(秒)</label>
+                        <input type="number" class="config-input" id="proxy-timeout" min="1" max="30" value="2">
+                    </div>
+                    <div class="config-actions" style="margin-top: 15px;">
+                        <button class="config-apply-btn" id="apply-proxy-config-btn">应用代理配置</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookie配置 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">Cookie配置</div>
+                <div class="sidebar-content">
+                    <div class="stat-item">
+                        <span class="stat-label">Cookie状态</span>
+                        <span class="stat-value" id="cookie-status">未配置</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Cookie长度</span>
+                        <span class="stat-value" id="cookie-length">-</span>
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">Cookie字符串</label>
+                        <textarea class="config-input" id="cookie-string" rows="6" placeholder="粘贴完整的Cookie字符串"></textarea>
+                    </div>
+                    <div class="config-actions" style="margin-top: 15px;">
+                        <button class="config-apply-btn" id="apply-cookie-config-btn">应用Cookie配置</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 性能配置 -->
+            <div class="sidebar-section">
+                <div class="sidebar-header">性能配置</div>
+                <div class="sidebar-content">
+                    <div class="config-item">
+                        <label class="config-label">并发请求数</label>
+                        <input type="number" class="config-input" id="concurrent-requests" min="1" max="10" value="1">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">请求延迟(秒)</label>
+                        <input type="number" class="config-input" id="request-delay" min="0.1" max="10" step="0.1" value="1.0">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">读取批量大小</label>
+                        <input type="number" class="config-input" id="read-batch-size" min="10" max="200" value="50">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">读取低阈值</label>
+                        <input type="number" class="config-input" id="read-low-threshold" min="5" max="50" value="20">
+                    </div>
+                    <div class="config-item">
+                        <label class="config-label">写入阈值</label>
+                        <input type="number" class="config-input" id="write-threshold" min="10" max="100" value="30">
+                    </div>
+                    <div class="preset-buttons">
+                        <button class="preset-button" data-preset="conservative">保守</button>
+                        <button class="preset-button" data-preset="standard">标准</button>
+                        <button class="preset-button" data-preset="high_speed">高速</button>
+                    </div>
+                    <div class="config-actions" style="margin-top: 15px;">
+                        <button class="config-apply-btn" id="apply-config-btn">应用配置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧监控区域 -->
+        <div class="monitor-container">
+            <div class="monitor-header">
+                <h3 class="monitor-title">实时监控</h3>
+            </div>
+
+            <div class="monitor-content">
+                <!-- 系统日志面板 -->
+                <div class="monitor-panel">
+                    <div class="panel-header" onclick="togglePanel('logs-panel')">
+                        <span>系统日志</span>
+                        <span class="panel-toggle">▼</span>
+                    </div>
+                    <div id="logs-error" style="display: none;"></div>
+                    <div class="panel-content" id="logs-panel">
+                        <div class="terminal-output" id="logs-output" style="height: 200px;">
+                            <div class="loading">
+                                <div class="loading-spinner"></div>
+                                <span>正在加载系统日志...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API响应面板 -->
+                <div class="monitor-panel">
+                    <div class="panel-header" onclick="togglePanel('responses-panel')">
+                        <span>API响应监控</span>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <button id="debug-response-btn" style="padding: 2px 6px; font-size: 10px; background: #666; color: white; border: none; border-radius: 2px; cursor: pointer;">调试</button>
+                            <button id="test-response-btn" style="padding: 2px 6px; font-size: 10px; background: #4a6ed3; color: white; border: none; border-radius: 2px; cursor: pointer;">测试</button>
+                            <span class="panel-toggle">▼</span>
+                        </div>
+                    </div>
+                    <div id="responses-error" style="display: none;"></div>
+                    <div class="panel-content" id="responses-panel">
+                        <div class="terminal-output" id="responses-output" style="height: 200px; overflow-x: auto;">
+                            <table class="response-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20px;">展开</th>
+                                        <th>时间</th>
+                                        <th>状态码</th>
+                                        <th>公司ID</th>
+                                        <th>信用代码</th>
+                                        <th>结果</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="responses-tbody">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: #666;">暂无响应数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据库日志面板 -->
+                <div class="monitor-panel">
+                    <div class="panel-header" onclick="togglePanel('database-panel')">
+                        <span>数据库日志</span>
+                        <span class="panel-toggle">▼</span>
+                    </div>
+                    <div id="database-error" style="display: none;"></div>
+                    <div class="panel-content" id="database-panel">
+                        <div class="terminal-output" id="database-output" style="height: 200px;">
+                            <div class="loading">
+                                <div class="loading-spinner"></div>
+                                <span>正在加载数据库日志...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息提示容器 -->
+    <div id="message-container"></div>
+
+    <script>
+        // 面板折叠功能
+        function togglePanel(panelId) {
+            const panel = document.getElementById(panelId);
+            const header = panel.previousElementSibling;
+            const toggle = header.querySelector('.panel-toggle');
+            
+            if (panel.classList.contains('collapsed')) {
+                panel.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+                toggle.textContent = '▼';
+            } else {
+                panel.classList.add('collapsed');
+                header.classList.add('collapsed');
+                toggle.textContent = '▶';
+            }
+        }
+    </script>
+
+    <script>
+        // 测试基本JavaScript执行
+        console.log('[WEB-TEMPLATE] - INFO - 模板内JavaScript开始执行');
+        console.log('[WEB-TEMPLATE] - INFO - 当前时间:', new Date().toISOString());
+        
+        // 测试DOM是否可用
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[WEB-TEMPLATE] - INFO - DOM加载完成');
+            console.log('[WEB-TEMPLATE] - INFO - document对象可用:', typeof document);
+            console.log('[WEB-TEMPLATE] - INFO - window对象可用:', typeof window);
+            
+            // 测试基本DOM操作
+            const testElement = document.createElement('div');
+            console.log('[WEB-TEMPLATE] - INFO - DOM操作测试成功');
+            
+            // 测试fetch API
+            console.log('[WEB-TEMPLATE] - INFO - 测试fetch API');
+            fetch('/api/health')
+                .then(response => {
+                    console.log('[WEB-TEMPLATE] - INFO - fetch响应状态:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('[WEB-TEMPLATE] - INFO - 健康检查数据:', data);
+                })
+                .catch(error => {
+                    console.error('[WEB-TEMPLATE] - ERROR - fetch失败:', error);
+                });
+        });
+    </script>
+    
+    <!-- 简化版主应用脚本 -->
+    <script src="{{ url_for('static', filename='js/app_simple.js') }}"></script>
+</body>
+</html>

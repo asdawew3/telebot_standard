@@ -1,0 +1,3 @@
+2025-08-03 07:04:33 [INFO] [operation:360] [PID:3676] [TID:1204] 【OPERATION】[web_routes.py:index:58][index] 未登录用户访问首页，重定向到登录页 | 数据: {'remote_addr': '127.0.0.1', 'redirect_to': 'login_page'}
+2025-08-03 07:04:33 [INFO] [operation:360] [PID:3676] [TID:22656] 【OPERATION】[web_routes.py:login_page:92][login_page] 显示登录页面 | 数据: {'remote_addr': '127.0.0.1', 'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'}
+2025-08-03 07:04:36 [INFO] [operation:360] [PID:3676] [TID:14640] 【OPERATION】[web_routes.py:dashboard:171][dashboard] 用户访问仪表板 | 数据: {'username': '10086', 'access_time': 1754175876.6941068, 'remote_addr': '127.0.0.1'}

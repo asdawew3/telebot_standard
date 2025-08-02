@@ -1,2 +1,3 @@
-2025/07/19-14:15:15.688 6810 Creating DB C:\Users\Administrator\Desktop\github_clone\telebot_standard\profiles\default\Default\Session Storage since it was missing.
-2025/07/19-14:15:15.700 6810 Reusing MANIFEST C:\Users\Administrator\Desktop\github_clone\telebot_standard\profiles\default\Default\Session Storage/MANIFEST-000001
+2025/07/19-14:16:33.531 9f10 Reusing MANIFEST C:\Users\Administrator\Desktop\github_clone\telebot_standard\profiles\default\Default\Session Storage/MANIFEST-000001
+2025/07/19-14:16:33.532 9f10 Recovering log #3
+2025/07/19-14:16:33.534 9f10 Reusing old log C:\Users\Administrator\Desktop\github_clone\telebot_standard\profiles\default\Default\Session Storage/000003.log 
